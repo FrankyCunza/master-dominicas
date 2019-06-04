@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Colegio Dominicas</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<!--<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>-->
+
+	<script type="text/javascript" src="js/jquery.fancybox.js"></script>
+	<script type="text/javascript" src="js/jquery.fancybox-thumbs.js"></script>
+	<script type="text/javascript" src="js/jquery.fancybox-media.js"></script>
+	<script type="text/javascript" src="js/jquery.fancybox-pack.js"></script>
+	<script type="text/javascript" src="js/fresco.js"></script>
+	<!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
+	<script src="http://malsup.github.com/jquery.cycle2.js"></script>
+	<!--<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">-->
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link rel="stylesheet" type="text/css" href="css/fresco.css">
+
+	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox-thumbs.css">
+
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link  rel = "stylesheet"  href = "http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" > 
+	<link  rel = "stylesheet"  href = "http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" > 
+	<script>
+      $(document).ready(function() {
+        $('.nav-toggle').click(function(){
+          //get collapse content selector
+          var collapse_content_selector = $(this).attr('href');         
+          
+          //make the collapse content to be shown or hide
+          var toggle_switch = $(this);
+          $(collapse_content_selector).toggle(function(){
+            if($(this).css('display')=='none'){
+              toggle_switch.html('Ver Menú<i class="fa fa-chevron-down" aria-hidden="true"></i>');//change the button label to be 'Show'
+            }else{
+              toggle_switch.html('Ocultar Menú<i class="fa fa-chevron-up" aria-hidden="true"></i>');//change the button label to be 'Hide'
+            }
+          });
+        });
+        
+      }); 
+    </script>
+    <script>
+      $(document).ready(function() {
+        $('.button__noticias').click(function(){
+          //get collapse content selector
+          var collapse_content_selector = $(this).attr('href');         
+          
+          //make the collapse content to be shown or hide
+          var toggle_switch = $(this);
+          $(collapse_content_selector).slideToggle(function(){
+            if($(this).css('display')=='none'){
+              toggle_switch.html('Ver Categorias<i class="fa fa-chevron-down" aria-hidden="true"></i>');//change the button label to be 'Show'
+            }else{
+              toggle_switch.html('Ocultar Categorias<i class="fa fa-chevron-up" aria-hidden="true"></i>');//change the button label to be 'Hide'
+            }
+          });
+        });
+        
+      }); 
+    </script>
+	<script>
+		$(document).ready(function(){
+		    $(".menu__principal").click(function(){
+		        $(".nav__principal").slideToggle();
+		    });
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			 *  Simple image gallery. Uses default settings
+			 */
+
+			$('.fancybox').fancybox();
+
+			/*
+			 *  Different effects
+			 */
+
+			// Change title type, overlay closing speed
+			$(".fancybox-effects-a").fancybox({
+				helpers: {
+					title : {
+						type : 'outside'
+					},
+					overlay : {
+						speedOut : 0
+					}
+				}
+			});
+
+			// Disable opening and closing animations, change title type
+			$(".fancybox-effects-b").fancybox({
+				openEffect  : 'none',
+				closeEffect	: 'none',
+
+				helpers : {
+					title : {
+						type : 'over'
+					}
+				}
+			});
+
+			// Set custom style, close if clicked, change title type and overlay color
+			$(".fancybox-effects-c").fancybox({
+				wrapCSS    : 'fancybox-custom',
+				closeClick : true,
+
+				openEffect : 'none',
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					overlay : {
+						css : {
+							'background' : 'rgba(238,238,238,0.85)'
+						}
+					}
+				}
+			});
+
+			// Remove padding, set opening and closing animations, close if clicked and disable overlay
+			$(".fancybox-effects-d").fancybox({
+				padding: 0,
+
+				openEffect : 'elastic',
+				openSpeed  : 150,
+
+				closeEffect : 'elastic',
+				closeSpeed  : 150,
+
+				closeClick : true,
+
+				helpers : {
+					overlay : null
+				}
+			});
+
+			/*
+			 *  Button helper. Disable animations, hide close button, change title type and content
+			 */
+
+			$('.fancybox-buttons').fancybox({
+				openEffect  : 'none',
+				closeEffect : 'none',
+
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					buttons	: {}
+				},
+
+				afterLoad : function() {
+					this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+				}
+			});
+
+
+			/*
+			 *  Thumbnail helper. Disable animations, hide close button, arrows and slide to next gallery item if clicked
+			 */
+
+			$('.fancybox-thumbs').fancybox({
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+				arrows    : false,
+				nextClick : true,
+
+				helpers : {
+					thumbs : {
+						width  : 50,
+						height : 50
+					}
+				}
+			});
+
+			/*
+			 *  Media helper. Group items, disable animations, hide arrows, enable media and button helpers.
+			*/
+			$('.fancybox-media')
+				.attr('rel', 'media-gallery')
+				.fancybox({
+					openEffect : 'none',
+					closeEffect : 'none',
+					prevEffect : 'none',
+					nextEffect : 'none',
+
+					arrows : false,
+					helpers : {
+						media : {},
+						buttons : {}
+					}
+				});
+
+			/*
+			 *  Open manually
+			 */
+
+			$("#fancybox-manual-a").click(function() {
+				$.fancybox.open('1_b.jpg');
+			});
+
+			$("#fancybox-manual-b").click(function() {
+				$.fancybox.open({
+					href : 'iframe.html',
+					type : 'iframe',
+					padding : 5
+				});
+			});
+
+			$("#fancybox-manual-c").click(function() {
+				$.fancybox.open([
+					{
+						href : '1_b.jpg',
+						title : 'My title'
+					}, {
+						href : '2_b.jpg',
+						title : '2nd title'
+					}, {
+						href : '3_b.jpg'
+					}
+				], {
+					helpers : {
+						thumbs : {
+							width: 75,
+							height: 50
+						}
+					}
+				});
+			});
+
+
+		});
+	</script>
+	<style type="text/css">
+		.fancybox-custom .fancybox-skin {
+			box-shadow: 0 0 50px #222;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid header">
+		<div class="row header__uno">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2 col-sm-2 col-xs-2">
+						<a href="index.html" class="logo"><img src="img/logo.png"></a>
+					</div><!--fin col md 3-->
+					<div class="col-md-10 col-md-offset-2 col-sm-10 col-sm-offset-2 col-xs-10">
+						<h1>DOMINICAS DE LA INMACULADA CONCEPCIÓN</h1>
+					</div><!--fin col sm 9-->
+				</div><!--fin row-->
+			</div><!--fin container-->
+		</div><!--fin row-->
+		<div class="row header__dos">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-2 col-sm-10 col-sm-offset-2 col-xs-12">
+						<button class=menu__principal><i class="fa fa-bars" aria-hidden="true"></i><p>MENÚ</p></button>
+						<nav class="nav__principal">
+							<ul class="menu">
+								   <li><a href="congregacion.html">NUESTRA CONGREGACIÓN</a></li><!--
+								--><li><a href="#">PROVINCIA SANTA ROSA</a></li><!--
+								--><li><a href="#">OBRAS DE APOSTOLADO / COLEGIOS</a></li>
+							</ul><!--fin menu-->
+						</nav><!--fin nav-->
+					</div><!--fin col md 9-->
+				</div><!--fin row-->
+			</div><!--fin container-->
+		</div><!--fin row-->
+	<div class="container pl__pr__768">
+		<div class="row">
+			<div class="col-sm-3 pl__pr__768 menu__interno__pad">
+				<div>
+	              <button href=".menu__noticias" class="menu__interno coloruno button__noticias">Ver Categorias<i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+	            </div>
+				<ul class="tabs-menu menu__noticias">
+			        <li><a href="#">CATEGORIA</a></li>
+			        <li><a href="#">CATEGORIA 1</a></li>
+			        <li><a href="#">CATEGORIA 2</a></li>
+			        <li><a href="#">CATEGORIA 3</a></li>
+			        <li><a href="#">CATEGORIA 4</a></li>
+			        <li><a href="#">CATEGORIA 5</a></li>
+			        <li><a href="#">CATEGORIA 6</a></li>
+			    </ul><!--fin tabs menu-->
+			</div>
+			<div class="col-sm-9">
+				<div class="col-md-12">
+					<h2 class="green">NOTICIAS</h2>
+				</div>
+				<ul class="noticias__principal">
+					<li>
+						<a href="noticias-interno.html" class="not">	
+							<img src="img/slider__uno.jpg">
+							<div class="not__description">
+								<p>16/NOV/15</p>
+								<p>Lorem Ipsum</p>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+							</div><!--fin not__description--><!--
+						 --><div class="not__flecha">
+								<i class="fa fa-angle-right" aria-hidden="true"></i>
+						    </div><!--fin  not__flecha-->
+						</a><!--fin not-->
+					</li><!--fin li noticias--><!--
+					--><li>
+						<a href="#" class="not">	
+							<div class="not__description">
+								<p>16/NOV/15</p>
+								<p>Lorem Ipsum</p>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+							</div><!--fin not__description--><!--
+						 --><div class="not__flecha">
+								<i class="fa fa-angle-right" aria-hidden="true"></i>
+						    </div><!--fin  not__flecha-->
+						</a><!--fin not-->
+					</li><!--fin li noticias--><!--
+					--><li>
+						<a href="#" class="not">	
+							<img src="img/slider__uno.jpg">
+							<div class="not__description">
+								<p>16/NOV/15</p>
+								<p>Lorem Ipsum</p>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+							</div><!--fin not__description--><!--
+						 --><div class="not__flecha">
+								<i class="fa fa-angle-right" aria-hidden="true"></i>
+						    </div><!--fin  not__flecha-->
+						</a><!--fin not-->
+					</li><!--fin li noticias--><!--
+					--><li>
+						<a href="#" class="not">	
+							<div class="not__description">
+								<p>16/NOV/15</p>
+								<p>Lorem Ipsum</p>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+							</div><!--fin not__description--><!--
+						 --><div class="not__flecha">
+								<i class="fa fa-angle-right" aria-hidden="true"></i>
+						    </div><!--fin  not__flecha-->
+						</a><!--fin not-->
+					</li><!--fin li noticias--><!--
+					--><li>
+						<a href="#" class="not">	
+							<div class="not__description">
+								<p>16/NOV/15</p>
+								<p>Lorem Ipsum</p>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+							</div><!--fin not__description--><!--
+						 --><div class="not__flecha">
+								<i class="fa fa-angle-right" aria-hidden="true"></i>
+						    </div><!--fin  not__flecha-->
+						</a><!--fin not-->
+					</li><!--fin li noticias--><!--
+					--><li>
+						<a href="#" class="not">
+							<img src="img/slider__uno.jpg">	
+							<div class="not__description">
+								<p>16/NOV/15</p>
+								<p>Lorem Ipsum</p>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+							</div><!--fin not__description--><!--
+						 --><div class="not__flecha">
+								<i class="fa fa-angle-right" aria-hidden="true"></i>
+						    </div><!--fin  not__flecha-->
+						</a><!--fin not-->
+					</li><!--fin li noticias--><!--
+					--><li>
+						<a href="#" class="not">	
+							<div class="not__description">
+								<p>16/NOV/15</p>
+								<p>Lorem Ipsum</p>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+							</div><!--fin not__description--><!--
+						 --><div class="not__flecha">
+								<i class="fa fa-angle-right" aria-hidden="true"></i>
+						    </div><!--fin  not__flecha-->
+						</a><!--fin not-->
+					</li><!--fin li noticias--><!--
+					--><li>
+						<a href="#" class="not">	
+							<div class="not__description">
+								<p>16/NOV/15</p>
+								<p>Lorem Ipsum</p>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+							</div><!--fin not__description--><!--
+						 --><div class="not__flecha">
+								<i class="fa fa-angle-right" aria-hidden="true"></i>
+						    </div><!--fin  not__flecha-->
+						</a><!--fin not-->
+					</li><!--fin li noticias--><!--
+					--><li>
+						<a href="#" class="not">	
+							<div class="not__description">
+								<p>16/NOV/15</p>
+								<p>Lorem Ipsum</p>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+							</div><!--fin not__description--><!--
+						 --><div class="not__flecha">
+								<i class="fa fa-angle-right" aria-hidden="true"></i>
+						    </div><!--fin  not__flecha-->
+						</a><!--fin not-->
+					</li><!--fin li noticias--><!--
+					--><li>
+						<a href="#" class="not">	
+							<div class="not__description">
+								<p>16/NOV/15</p>
+								<p>Lorem Ipsum</p>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+							</div><!--fin not__description--><!--
+						 --><div class="not__flecha">
+								<i class="fa fa-angle-right" aria-hidden="true"></i>
+						    </div><!--fin  not__flecha-->
+						</a><!--fin not-->
+					</li><!--fin li noticias--><!--
+					--><li>
+						<a href="#" class="not">	
+							<div class="not__description">
+								<p>16/NOV/15</p>
+								<p>Lorem Ipsum</p>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+							</div><!--fin not__description--><!--
+						 --><div class="not__flecha">
+								<i class="fa fa-angle-right" aria-hidden="true"></i>
+						    </div><!--fin  not__flecha-->
+						</a><!--fin not-->
+					</li><!--fin li noticias--><!--
+					--><li>
+						<a href="#" class="not">	
+							<div class="not__description">
+								<p>16/NOV/15</p>
+								<p>Lorem Ipsum</p>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+							</div><!--fin not__description--><!--
+						 --><div class="not__flecha">
+								<i class="fa fa-angle-right" aria-hidden="true"></i>
+						    </div><!--fin  not__flecha-->
+						</a><!--fin not-->
+					</li><!--fin li noticias-->
+				</ul><!--fin ul noticias-->
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid footer__containerfluid">
+		<div class="container">
+		<footer class="footer">
+			<div class="col-md-2 col-sm-2 col-xs-3">
+				<div class="footer__item">
+					<h4>CONGREGACIÓN</h4>
+					<ul>
+						<li><a>¿Quienes somos?</a></li>
+						<li><a>Historia</a></li>
+						<li><a>Vida Dominicana</a></li>
+						<li><a>¿Dónde estamos?</a></li>
+						<li><a>Compromiso</a></li>
+						<li><a>Crónicas</a></li>
+						<li><a>Primeras Fundaciones</a></li>
+						<li><a>Superioras Generales</a></li>
+						<li><a>Fundadores</a></li>
+					</ul>
+				</div><!--fin footer item-->
+			</div><!--fin col md 2-->
+			<div class="col-md-2 col-sm-2 col-xs-3">
+				<div class="footer__item">
+					<h4>PROVINCIA<br>SANTA ROSA</h4>
+					<ul>
+						<li><a href="#">Presentación</a></li>
+						<li><a href="#">Espiritualidad</a></li>
+						<li><a href="#">Una Dominica es...</a></li>
+						<li><a href="#">Obras</a></li>
+						<li><a href="#">Consitución de Fundadores</a></li>
+						<li><a href="#">Proyecto Pastoral</a></li>
+						<li><a href="#">Colegios</a></li>
+					</ul>
+				</div><!--fin footer item-->
+			</div><!--fin col md 2-->
+			<div class="col-md-2 col-sm-2 col-xs-3">
+				<div class="footer__item">
+					<h4>RECURSOS</h4>
+					<ul>
+						<li><a href="#">Artículos</a></li>
+						<li><a href="#">Oraciones</a></li>
+						<li><a href="#">Fechas Importantes</a></li>
+						<li><a href="#">Galería</a></li>
+					</ul>
+				</div><!--fin footer item-->
+			</div><!--fin col md 2-->
+			<div class="col-md-2 col-sm-2 col-xs-3">
+				<div class="footer__item">
+					<h4>SEDES</h4>
+					<ul>
+						<li><a href="#">La Libertad</a></li>
+						<li><a href="#">Lima</a></li>
+						<li><a href="#">Piura</a></li>
+						<li><a href="#">Lambayeque</a></li>
+						<li><a href="#">Cajamarca</a></li>
+						<li><a href="#">Junín</a></li>
+						<li><a href="#">Ica</a></li>
+						<li><a href="#">Arequipa</a></li>
+						<li><a href="#">Cusco</a></li>
+						<li><a href="#">Mendoza</a></li>
+						<li><a href="#">Roma</a></li>
+					</ul>
+				</div><!--fin footer item-->
+			</div><!--fin col md 2-->
+			<div class="col-md-3 col-md-offset-1 col-sm-4 col-xs-12">
+				<img src="img/logo.png" width="75px" height="73px">
+				<h3>HERMANAS DOMINICAS DE LA<br>INMACULADA CONCEPCIÓN</h3>
+				<p>PROVINCIA SANTA ROSA - PERÚ</p>
+				<p>(01) 440-6323</p>
+				<p>email: dic@dominicasperu.com.pe</p>
+				<p>Administrador: TAI GRAF S.A.C.</p>
+				<p>Copyright © 2013 Dominicas Perú</p>
+				<p>Todos los derechos reservados</p>
+			</div>
+		</footer><!--fin footer-->
+		</div><!--fin container-->
+	</div><!--fin container fluid-->
+</body>
+</html>

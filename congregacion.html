@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Colegio Dominicas</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<!--<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>-->
+
+	<script type="text/javascript" src="js/jquery.fancybox.js"></script>
+	<script type="text/javascript" src="js/jquery.fancybox-thumbs.js"></script>
+	<script type="text/javascript" src="js/jquery.fancybox-media.js"></script>
+	<script type="text/javascript" src="js/jquery.fancybox-pack.js"></script>
+	<script type="text/javascript" src="js/fresco.js"></script>
+	<!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
+	<script src="http://malsup.github.com/jquery.cycle2.js"></script>
+	<!--<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">-->
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link rel="stylesheet" type="text/css" href="css/fresco.css">
+
+	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox-thumbs.css">
+
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link  rel = "stylesheet"  href = "http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" > 
+	<link  rel = "stylesheet"  href = "http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" > 
+
+	<script>
+		$(document).ready(function(){
+		    $(".menu__principal").click(function(){
+		        $(".nav__principal").slideToggle();
+		    });
+		});
+	</script>
+	<script>
+      $(document).ready(function() {
+        $('.menu__interno').click(function(){
+          //get collapse content selector
+          var collapse_content_selector = $(this).attr('href');         
+          
+          //make the collapse content to be shown or hide
+          var toggle_switch = $(this);
+          $(collapse_content_selector).slideToggle(function(){
+            if($(this).css('display')=='none'){
+              toggle_switch.html('Ver Menú<i class="fa fa-chevron-down" aria-hidden="true"></i>');//change the button label to be 'Show'
+            }else{
+              toggle_switch.html('Ocultar Menú<i class="fa fa-chevron-up" aria-hidden="true"></i>');//change the button label to be 'Hide'
+            }
+          });
+        });
+        
+      }); 
+    </script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			 *  Simple image gallery. Uses default settings
+			 */
+
+			$('.fancybox').fancybox();
+
+			/*
+			 *  Different effects
+			 */
+
+			// Change title type, overlay closing speed
+			$(".fancybox-effects-a").fancybox({
+				helpers: {
+					title : {
+						type : 'outside'
+					},
+					overlay : {
+						speedOut : 0
+					}
+				}
+			});
+
+			// Disable opening and closing animations, change title type
+			$(".fancybox-effects-b").fancybox({
+				openEffect  : 'none',
+				closeEffect	: 'none',
+
+				helpers : {
+					title : {
+						type : 'over'
+					}
+				}
+			});
+
+			// Set custom style, close if clicked, change title type and overlay color
+			$(".fancybox-effects-c").fancybox({
+				wrapCSS    : 'fancybox-custom',
+				closeClick : true,
+
+				openEffect : 'none',
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					overlay : {
+						css : {
+							'background' : 'rgba(238,238,238,0.85)'
+						}
+					}
+				}
+			});
+
+			// Remove padding, set opening and closing animations, close if clicked and disable overlay
+			$(".fancybox-effects-d").fancybox({
+				padding: 0,
+
+				openEffect : 'elastic',
+				openSpeed  : 150,
+
+				closeEffect : 'elastic',
+				closeSpeed  : 150,
+
+				closeClick : true,
+
+				helpers : {
+					overlay : null
+				}
+			});
+
+			/*
+			 *  Button helper. Disable animations, hide close button, change title type and content
+			 */
+
+			$('.fancybox-buttons').fancybox({
+				openEffect  : 'none',
+				closeEffect : 'none',
+
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					buttons	: {}
+				},
+
+				afterLoad : function() {
+					this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+				}
+			});
+
+
+			/*
+			 *  Thumbnail helper. Disable animations, hide close button, arrows and slide to next gallery item if clicked
+			 */
+
+			$('.fancybox-thumbs').fancybox({
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+				arrows    : false,
+				nextClick : true,
+
+				helpers : {
+					thumbs : {
+						width  : 50,
+						height : 50
+					}
+				}
+			});
+
+			/*
+			 *  Media helper. Group items, disable animations, hide arrows, enable media and button helpers.
+			*/
+			$('.fancybox-media')
+				.attr('rel', 'media-gallery')
+				.fancybox({
+					openEffect : 'none',
+					closeEffect : 'none',
+					prevEffect : 'none',
+					nextEffect : 'none',
+
+					arrows : false,
+					helpers : {
+						media : {},
+						buttons : {}
+					}
+				});
+
+			/*
+			 *  Open manually
+			 */
+
+			$("#fancybox-manual-a").click(function() {
+				$.fancybox.open('1_b.jpg');
+			});
+
+			$("#fancybox-manual-b").click(function() {
+				$.fancybox.open({
+					href : 'iframe.html',
+					type : 'iframe',
+					padding : 5
+				});
+			});
+
+			$("#fancybox-manual-c").click(function() {
+				$.fancybox.open([
+					{
+						href : '1_b.jpg',
+						title : 'My title'
+					}, {
+						href : '2_b.jpg',
+						title : '2nd title'
+					}, {
+						href : '3_b.jpg'
+					}
+				], {
+					helpers : {
+						thumbs : {
+							width: 75,
+							height: 50
+						}
+					}
+				});
+			});
+
+
+		});
+	</script>
+	<style type="text/css">
+		.fancybox-custom .fancybox-skin {
+			box-shadow: 0 0 50px #222;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid header">
+		<div class="row header__uno">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2 col-sm-2 col-xs-2">
+						<a href="index.html" class="logo"><img src="img/logo.png"></a>
+					</div><!--fin col md 3-->
+					<div class="col-md-10 col-md-offset-2 col-sm-10 col-sm-offset-2 col-xs-10">
+						<h1>DOMINICAS DE LA INMACULADA CONCEPCIÓN</h1>
+					</div><!--fin col sm 9-->
+				</div><!--fin row-->
+			</div><!--fin container-->
+		</div><!--fin row-->
+		<div class="row header__dos">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-2 col-sm-10 col-sm-offset-2 col-xs-12">
+						<button class="menu__principal"><i class="fa fa-bars" aria-hidden="true"></i><p>MENÚ</p></button>
+						<nav class="nav__principal">
+							<ul class="menu">
+								   <li><a href="#" class="active">NUESTRA CONGREGACIÓN</a></li><!--
+								--><li><a href="#">PROVINCIA SANTA ROSA</a></li><!--
+								--><li><a href="#">OBRAS DE APOSTOLADO / COLEGIOS</a></li>
+							</ul><!--fin menu-->
+						</nav><!--fin nav-->
+					</div><!--fin col md 9-->
+				</div><!--fin row-->
+			</div><!--fin container-->
+		</div><!--fin row-->
+	</div><!--fin container fluid-->
+	<div class="container nuestra__congregacion">
+		<div class="row">
+			<div class="col-md-2 menu__interno__pad">
+				<div>
+	              <button href="#collapse1" class="menu__interno coloruno">Ver Menú<i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+	            </div>
+				<ul class="tabs-menu" id="collapse1">
+			        <li class="current"><a href="#tab-1">¿QUIÉNES SOMOS?</a></li>
+			        <li><a href="#tab-2">HISTORIA</a></li>
+			        <li><a href="#tab-3">VIDA DOMINICANA</a></li>
+			        <li><a href="#tab-4">¿DÓNDE ESTAMOS?</a></li>
+			        <li><a href="#tab-5">COMPROMISO</a></li>
+			        <li><a href="#tab-6">CRÓNICAS</a></li>
+			        <li><a href="#tab-7">PRIMERAS FUNDACIONES</a></li>
+			        <li><a href="#tab-8">SUPERIORAS GENERALES</a></li>
+			        <li><a href="#tab-9">FUNDADORES</a></li>
+			    </ul><!--fin tabs menu-->
+			</div><!--fin col md 3-->
+			<div class="col-md-10">
+				<div class="tab">
+			        <div id="tab-1" class="tab-content">
+			        	<div class="row">
+			        			<h2 class="green">¿QUIÉNES SOMOS?</h2>
+			        		<div class="col-md-12">
+			        			<img src="img/congregacion__uno.jpg">
+			        		</div>
+			        		<div class="col-md-12">
+			        			<h4>DOMINICAS DE LA INMACULADA CONCEPCIÓN<br>
+								Provincia Santa Rosa</h4>
+			        		</div>
+			        		<div class="col-md-6">
+			        			<p class="texto__interno">
+			        				La familia Religiosa fundada por Eduviges Portalet, Iluminada por el espíritu contemplativo y apostólico de Santo Domingo de Guzmán se afilia a la Orden Predicadores, el 8 de diciembre de 1884 gracias a la intervención del Beato Jacinto María Cormier, nuestro cofundador.
+									<br><br>
+									La Congregación esta presente en Francia, España, Italia, Estados Unidos, México, Argentina, Colombia, Ecuador y Perú, desde estos espacios geográficos el espíritu de Eduviges Portalet en la luz de una fe tenaz, sólida y firme, revestida de sencillez, humildad y pobreza, despojada y valiente, transita por nuestros caminos, invitándonos a ser PORTADORAS de la LUZ de Cristo para disipar las sombras y las tinieblas que impiden la esperanza, la verdad y el amor a la humanidad de hoy.
+									<br><br>
+									En el tiempo de Eduviges los ciegos físicos -que eran muchos- por las situaciones sociales y políticas de su tiempo, la interpelaron grandemente, hoy otros ciegos -de fe, cultura, educación- interpelan la vida de las dominicas de hoy.
+									<br><br>
+									Nuestra espiritualidad se expresa de una forma clara y sencilla en nuestro carisma:
+			        			</p>
+			        			<div class="texto__interno__box">
+			        				<p>“Predicar la verdad<br>
+									y portar la luz”</p>
+			        			</div>
+			        		</div>
+			        		<div class="col-md-6">
+			        			<h5 class="subtitulo__interno">
+									Visión:
+								</h5>
+			        			<p class="texto__interno">
+									Como Hermanas Dominicas de la Inmaculada Concepción fortaleceremos y continuaremos siendo testimonio de mujeres eucarísticas, orantes y proféticas para responder a los desafíos del mundo de hoy.
+								</p>
+								<h5 class="subtitulo__interno">
+									Misión:
+								</h5>
+								<p class="texto__interno">
+									Buscar ardientemente, como nuestro Santo Domingo y Eduviges Portalet, nuestra santificación y la salvación de nuestros hermanos, a través de un auténtico servicio a la Evangelización y promoción integral del hombre, dedicándonos principalmente a la Educación y a la Asistencia Social.
+			        			</p>
+			        		</div>
+			        	</div>
+			            
+			            
+			        </div><!--fin tab 1-->
+			        <div id="tab-2" class="tab-content">
+			        	<div class="row">
+			        			<h2>HISTORIA</h2>
+			        		<div class="col-md-12">
+			        			<img src="img/congregacion__uno.jpg">
+			        		</div>
+			        		<div class="col-md-12">
+			        			<h4>ORÍGENES<br>
+								Trayectoria a lo largo de la historia</h4>
+			        		</div>
+			        		<div class="col-md-6">
+			        			<p class="texto__interno">
+			        				Eduviges en ToulouseFrancia, cuna de nuestra Congregación está situada en Europa occidental, al norte limita con el canal de la Mancha y el Paso de Caláis; al este con Alemania, Suiza e Italia; al sur con el mediterráneo y España, al Oeste con el Océano Atlántico. Francia tiene la configuración de un hexágono con fronteras que dan acceso a los cuatro sistemas marítimos de Europa. Sus ríos la ponen en comunicación con el mundo entero: el RODANO traza el camino de Asia y de África; el GARONA y el LOIRA miran hacia América; el SENA abre el sendero de Inglaterra y los ríos del Este van a depositar sus aguas en el centro de la Europa central.
+									<br><br>
+									Los montes Vosgos la separan de Alemania, el JURA de Suiza; los Alpes de Italia y los Pirineos la separan de España. Estas montañas parecen monumentos levantados por el gran Hacedor para preconizar la libertad del pueblo francés.
+			        			</p>
+			        			<h5 class="subtitulo__interno">
+									TOULOUSE
+								</h5>
+								<p class="texto__interno">
+									Al sur de París se encuentra TOULOUSE, a orillas del río Garona. En su conjunto tiene aspecto de un pueblo de edad media, pero por su estructura arquitectónica es una ciudad moderna.
+									En esta ciudad, en 1866, la Madre Eduviges Portalet funda una escuela para niños ciegos enviada por el Instituto de María Inmaculada de Marsella. Tres años después ante la situación de aquéllos niños privados de la luz natural y con ansia de conocer la luz de la fe, la Madre Eduviges apoyada por la autoridad eclesiástica funda la Congregación de Hermanas Dominicas de la Inmaculada Concepción.
+									<br><br>
+									Las primeras hermanas fueron Eduviges Portalet y Francisca Lohier, acompañadas de otras jóvenes, quienes respondiendo a un llamado extraordinario del Señor, supieron actuar según las inspiraciones del Espíritu Santo siguiendo las directivas de la Iglesia.
+									<br><br>
+									El Señor de la Historia que siempre suscita para su Iglesia almas generosas, las llamó a mies y el tiempo y la respuesta de amor de ellas fueron haciendo madurar esta comunidad en la responsabilidad de sus tareas diarias, en la exquisita caridad de su apostolado inicial con los invidentes, en la contemplación y el estudio, en las celebración Eucarística centro y culmen de la vida cristiana y en un especial cariño a María Inmaculada, Madre de Dios.
+									<br><br>
+									En el Convento de Toulouse, el Padre Jacinto María Cormier, digno hijo y apóstol de la Orden de Predicadores, como buen Dominico, orientó, animó e intensificó la práctica de la virtud y de la caridad, teniendo como base el trato íntimo con el Señor y la contemplación de Dios, Suma, Eterna y total Verdad, para comunicar a los demás lo contemplado (CONTEMPLATA ALIIS TRADERE).
+									<br><br>
+									El 8 de Diciembre de 1884, la Congregación fue afiliada a la Orden de Predicadores, por un decreto especial dado en Roma por el Maestro de la Orden Fr. José María Larroca O.P., el Padre Jacinto decía a Madre Eduviges: "Arquímedes pedía un punto de apoyo para levantar el mundo y nadie se lo dio; allí lo tenéis vos, dijo, señalando a las religiosas, levantadlo a las alturas de la santidad y del saber con la palanca poderosa del Santísimo Rosario".
+									<br><br>
+								</p>
+			        		</div>
+			        		<div class="col-md-6">
+			        			<p class="texto__interno">
+									Nuestro Padre Fundador Jacinto María escribió textualmente al Maestro de la Orden: "He fundado esta Congregación para que sea depositaria de la azucena virginal, que es sagrada herencia de nuestro Padre Santo Domingo. Quiero que hayan ángeles en la tierra como los hay en el cielo". Pedía a todos amabilidad para con todos, sin distinción de clases ni credos, convencido que la bondad es el aroma del corazón, de que así como la flor no niega a nadie su perfume, del mismo modo un alma religiosa a nadie niegue su bondad.
+									<br><br>
+									En breve tiempo la Madre Eduviges y sus hermanas encendidas por el espíritu dominicano y su celo por la salvación de las almas, pusieron sus ojos en América como el campo para seguir cultivando la viña del Señor. 
+									Las primeras dominicas de la Inmaculada Concepción llegaron a Ecuador, después de una larga travesía por mar. Del Puerto de Guayaquil viajaron hasta Cuenca para hacerse cargo del Leprocomio Mariano Estrella.
+									<br><br>
+									Posteriormente fueron solicitadas desde Trujillo llegando al Perú para evangelizar a través de la educación, desde allí se extendieron a partir de 1898. En este año se funda el Colegio Nacional Santa Rosa de Trujillo y posteriormente muchas otras obras dedicadas a la Educación de niños y jóvenes a lo largo y ancho de nuestro Perú.
+									<br><br>
+									En el frondoso árbol de la Orden Dominicana, nuestra Congregación ha extendido su tarea apostólica en Francia, España, Italia, Ecuador, Colombia, México, Estados Unidos, Argentina y Perú.
+									<br><br>
+									En 1998 la Congregación conmemoró su primer centenario de presencia apostólica en el Perú; bajo la atenta mirada de nuestro Padre Jacinto María Cormier que fue beatificado por el Papa Juan Pablo II en el año 1994 y del espíritu de nuestra fundadora Eduviges Portalet, la mujer fuerte del evangelio quien supo discernir en su tiempo el llamado especialísimo que Dios le hizo, para que siga animando a nuestra Familia Dominicana de la Inmaculada Concepción a vivir unánimes en el Señor, no teniendo más que un solo corazón y una sola alma en Dios.
+									<br><br>
+									Al amparo de María Inmaculada, la Congregación de Hermanas Dominicas de la Inmaculada Concepción camina por los caminos del Señor, animada por las virtudes teologales "...procurando que cada una de las hermanas tienda a su propia santificación, siguiendo con más libertad a Cristo pobre, casto y obediente y trabajando para la edificación del edificio común que es la Congregación". (Constitución Fundamental)
+								</p>
+			        		</div>
+			        	</div>
+			            
+			            
+			        </div><!--fin tab 2-->
+			        <div id="tab-3" class="tab-content">
+			        	<div class="row">
+			        			<h2>VIDA DOMINICANA</h2>
+			        		<div class="col-md-12">
+			        			<img src="img/congregacion__uno.jpg">
+			        		</div>
+			        		<div class="col-md-12">
+			        			<h4>CARISMA<br>
+								“PREDICAR LA VERDAD Y PORTAR LA LUZ”</h4>
+			        		</div>
+			        		<div class="col-md-6">
+			        			<p class="texto__interno">
+			        				Todo cristiano participa de la experiencia de Dios y si se considera seguidor de Jesús no es ajeno a vivir la pobreza evangélica y a ser solidario con los pobres. Todo bautizado es miembro vivo de la Iglesia y esta llamado a participar del anuncio del evangelio especialmente con la propia vida. 
+									<br><br>
+									El Espíritu Santo reparte los carismas en la comunidad cristiana para edificar el Pueblo de Dios y estos dones son esenciales en la experiencia de fe. Hay algunos a quienes específicamente se les otorga algún carisma especial, ellos tienen la responsabilidad de mantenerlo vivo en la Iglesia y en la renovación toda familia religiosa, la fidelidad al propio carisma es criterio esencial.
+									<br><br>
+									El carisma configura toda la vida de la dominica. La predicación pertenece a la esencia misma de la misión. El carisma dominicano es una responsabilidad con la Iglesia y la sociedad, no es un derecho adquirido para competir con otras congregaciones o institutos de la iglesia. El carisma dominicano adquiere sentido y misión, cuando es un cauce para la revitalización de la Iglesia, es, en definitiva, una espiritualidad, una acción del Espíritu que anima y da vida.
+									<br><br>
+									El carisma dominicano es la predicación. Cuando se habla de Predicar la Verdad se trata de una predicación cualificada, de una predicación entendida más como un carisma que como una simple tarea o función. Humberto de Romans llegó a afirmar que "No es lo mismo predicar que echar sermones". Dar sermones es una actividad que puede ser llevada a cabo incluso por los no creyentes. Cualquier persona puede hablar, predicar es otro tema. Una dominica predica con el testimonio de su vida, en clave de coherencia siempre, en definitiva, en el pentagrama del carisma que es la experiencia de Dios, vida en el Espíritu, auténtica espiritualidad cristiana.
+									<br><br>
+									La predicación que constituye el núcleo del carisma dominicano no es una actividad profesional o una mera función pastoral. Es un carisma, una espiritualidad, una experiencia cualificada del Espíritu y una obra del mismo Espíritu en y a través del que predica. El ejercicio de la predicación es una forma de imitación de Cristo. Dicho con más exactitud, es una forma de imitación de los Apóstoles como camino específico para la imitación de Cristo.
+									<br><br>
+									Es una forma de seguir radicalmente a Jesús, que no sólo predica sino que es la Palabra, la Buena Nueva, camino, luz, verdad y vida.
+									<br><br>
+									El carisma de la predicación es un carisma universal en la Iglesia, es también esencial a toda experiencia cristiana. La evangelización forma parte de la vocación primera, de la naturaleza más íntima de la iglesia.
+									<br><br>
+								</p>
+			        		</div>
+			        		<div class="col-md-6">
+			        			<p class="texto__interno">
+									La predicación y la evangelización no consiste simplemente en anunciar el mensaje evangélico es sobre todo mostrar el Evangelio vivo y actualizarlo, testimoniarlo con la vida.
+									<br><br>
+									Experiencia central del carisma de la predicación es, la experiencia de Dios, la experiencia radical de fe, cultivada a través de una vida contemplativa intensa. Domingo retoma esta experiencia de la tradición monástica, pero la orienta en una dirección esencialmente apostólica. Ya no se trata de una vida contemplativa que huye del mundo, es una vida contemplativa en medio del mundo, nacida de la contemplación de la historia humana; es pasión por Jesucristo y pasión por la humanidad, filtrada a través de la contemplación y el estudio de la Palabra de Dios y destinada a alimentar el anuncio de la Palabra.
+									<br><br>
+									Eduviges Portalet nuestra fundadora vive la experiencia contemplativa de Dios al pie del Sagrario donde dobladas las rodillas, pero sobre todo el corazón supo tener el oído atento a la escucha de la voz de Espíritu, el corazón pronto al proyecto divino. No solamente las largas horas al pie del tabernáculo sino el alma despierta a la voluntad del Señor, a los gritos de los hermanos que rasgan las cortinas del templo.
+									<br><br>
+									Eduviges aprendió la pedagogía de la Palabra de Dios que habla al corazón en la lectio divina y que si cae constante y en siembra perenne, llega a fecundar la vida con amor y fe; por eso supo leer con atención los acontecimientos de cada día.
+									<br><br>
+									La experiencia contemplativa incluye prácticas significativas en este proyecto de la vida de toda dominica, como el silencio contemplativo, la oración, la celebración litúrgica, el estudio. La experiencia contemplativa es parte integrante del carisma de la predicación; es núcleo de la espiritualidad dominicana.
+									<br><br>
+									Las primeras comunidades dominicanas entendieron que el silencio era ese guardián de la vida interior y que en ese silencio, la oración, la contemplación y la vida fraterna se hacen fecundas. 
+									La celebración litúrgica consolida la comunidad pues cuando todas las hermanas entonan himnos a la vida y alabanzas al Señor en la misma nota y en el mismo pentagrama nos unimos al coro de la Iglesia y en la comunión de los santos nos hace comunión y unidad.
+								</p>
+			        		</div>
+			        	</div>
+			        </div><!--fin tab 3-->
+			        <div id="tab-4" class="tab-content">
+			        	<div class="row">
+			        			<h2>¿DÓNDE ESTAMOS?</h2>
+			        		<div class="col-md-12">
+			        			<img src="img/congregacion__uno.jpg">
+			        		</div>
+			        		<div class="col-md-12">
+			        			<h4>¿ DONDE ESTAMOS?<br>
+								El Evangelio en acción</h4>
+			        		</div>
+			        		<div class="col-md-6">
+			        			<p class="texto__interno">
+			        				Nuestra misión es predicar la verdad del evangelio integrando cultura, fe y vida, a través de la educación de jóvenes, niños y adultos, promoviendo y formando en ellos la conciencia de ser fermento e irradiación del Evangelio. El hombre no es una isla, somos una comunidad al servicio del Evangelio, insertado en la vida del pueblo.
+									<br><br>
+									Eduviges Portalet fue llamada por el Espíritu Santo en la tierra cien por ciento dominicana de Toulouse, Francia, para portar la luz del Evangelio y para predicar la Verdad. Veinte años de fundada tenía la Congregación, cuando las primeras misioneras dominicas, con la intrepidez de la fe y el amor por el anuncio del Evangelio, pusieron sus ojos y su vida en América, llamadas por el Señor a la tierra americana para ser sacramento universal de salvación.
+								</p>
+			        		</div>
+			        		<div class="col-md-6">
+			        			<p class="texto__interno">
+									Después de una larga travesía por el océano Atlántico y luego el Pacífico llegaron a Guayaquil, Ecuador, para subir hasta Cuenca, donde se hicieron cargo del leprocomio Mariano Estrella. Allí. La Congregación, cual árbol frondoso comenzó a extender sus ramas por toda la geografía Ecuatoriana con el nombre de Provincia Santo Domingo.
+									<br><br>
+									De allí también  como un sarmiento fecundo llegó a Trujillo, Perú, extendiéndose por tierras peruanas formándose la Provincia Santa Rosa.
+									<br><br>
+									La Provincia María Inmaculada se extendió por Francia, España e Italia.
+									La Provincia Santo Domingo en Ecuador, Colombia, México y EE.UU.
+									La Provincia Santa Rosa del Perú tiene obras en Piura, Cajamarca, Lambayeque, La Libertad, Lima, Junín, Ica, Cuzco, Arequipa, Argentina e Italia.
+									En toda la geografía donde hay un hábito blanco y negro, la dominica está llamada a contemplar para dar lo contemplado, es decir: “Predicar la Verdad y Portar la luz de Cristo”. 
+								</p>
+			        		</div>
+			        	</div>
+			        </div><!--fin tab 4-->
+			        <div id="tab-5" class="tab-content">
+			        	<div class="row">
+			        			<h2>COMPROMISO</h2>
+			        		<div class="col-md-12">
+			        			<img src="img/congregacion__uno.jpg">
+			        		</div>
+			        		<div class="col-md-12">
+			        			<h4>COMPROMISO<br>
+								Contemplar el rostro de Cristo</h4>
+			        		</div>
+			        		<div class="col-md-6">
+			        			<p class="texto__interno">
+			        				En el caminar del tercer milenio la religiosa esta llamadas a poner la propia existencia al servicio del Reino de Dios, dejándolo todo e imitando más de cerca a Jesucristo, asumiendo un papel sumamente pedagógico para el Pueblo de Dios.
+									<br><br>
+									La vida consagrada, es un don que través de una existencia transfigurada, participa en la vida de la Trinidad y confiesa el amor que salva y que invita gozosamente a la humanidad a caminar hacia el Amor.
+									<br><br>
+									En el corazón de la Iglesia representa una bendición y un motivo de esperanza para la vida humana y para la vida eclesial. Se aprecia un loable esfuerzo por encontrar un ejercicio de la autoridad y de la obediencia más inspirado en el Evangelio que afirma, ilumina, convoca, integra, reconcilia.
+									<br><br>
+									En un don porque la espiritualidad de la comunión da un alma madurez y fibra de confianza, apertura y dignidad.
+									<br><br>
+									La vida espiritual, ocupa el primer lugar en el programa de la vida consagrada, de tal modo que la comunidad sea verdadera escuela de auténtica espiritualidad para ser más eclesial y comunitaria, más exigente y madura en la búsqueda de la santidad, más generosa en las opciones apostólicas. Una espiritualidad más abierta para ser pedagogía y pastoral de la santidad en la vida consagrada y en su irradiación a todo el pueblo de Dios.
+								</p>
+			        		</div>
+			        		<div class="col-md-6">
+			        			<p class="texto__interno">
+									Eduviges Portalet recibió una llamada concreta en Toulouse. El Señor la llama para portar luz, para las tinieblas y las oscuridades de tantos niños que víctimas de las contiendas fratricidas, del egoísmo de tantos, de las injusticias y desigualdades quedaron sin luz en los ojos físicos. Y el Espíritu Santo no solo la llamó a dar respuesta a su falta de luz física, sino también a su falta de luz no física: la luz de la fe, la luz de la Educación, la Luz de la cultura, la Luz de la vida.
+									<br><br>
+									En el tiempo y la geografía de hoy, el porcentaje de los ciegos físicos no son tan grandes; es más, la sociedad de hoy ha planteado seria y responsablemente la inclusión educativa. ¿Quiénes son los ciegos de hoy para las Dominicas de la Inmaculada Concepción? Aquéllos que les falta la luz de la fe para vivir con esperanza; Aquellos que les falta la luz de la educación, para formar el corazón y sensibilizarlo, para renovar su capacidad de amar y de servir; aquellos que les falta la luz de la cultura, para ampliar sus horizontes y hacerlos más humano; para aquellos que le falta la luz de la vida y las oscuridades y las tinieblas de la vida le han quitado la esperanza, las ganas de vivir, la autoestima.
+									<br><br>
+									Toda dominica de la Inmaculada Concepción por cuyas venas espirituales corre la sangre de Eduviges Portalet, es una Predicadora de la Verdad de la Verdad y portadora de la luz de Cristo, con su vida, con su testimonio, con su obediencia, estudio y fraternidad. Solo así su predicación será fecunda. Solo así podrá contemplando el esplendor del rostro de Cristo, y mirando su testimonio la humanidad percibirá el rostro del Señor Jesús.
+								</p>
+			        		</div>
+			        	</div>
+			        </div><!--fin tab 5-->
+			        <div id="tab-6" class="tab-content">
+			        	<div class="row">
+			        			<h2>Crónicas</h2>
+			        		<div class="col-md-12">
+			        			<img src="img/congregacion__uno.jpg">
+			        		</div>
+			        		<div class="col-md-12">
+			        			<h4>Crónicas<br>
+								Las Primeras Dominicas en Ecuador</h4>
+			        		</div>
+			        		<div class="col-md-6">
+			        			<p class="texto__interno">
+			        				Cuando se tuvo conocimiento en el Ecuador, de la existencia de una nueva rama de la Familia Dominicana, las Hermanas Dominicas de la Inmaculada Concepción, el Prior del convento Dominico de Cuenca, Fray Reginaldo María Durantini, debidamente autorizado por la Consulta, gestionó ante el gobierno de la Congregación la venida de las hermanas, para que se hicieran cargo del Leprocomio de Cuenca. Secundaron la actividad del Padre Duranti, varios caballeros de la sociedad de Cuenca, entre ellos, el Dr. Luis Cordero Crespo, el Dr. Francisco Moscoso, Don. Mariano Estrella y otros. 
+									<br><br>
+									La solicitud a las Hermanas de Francia fue hecha por intermedio del Padre Jacinto María Cormier, O.P. según relata la Madre Francoise Lohier en sus memorias, que el Padre ha llamado a otras Congregaciones Dominicanas, pero todas han rehusado. Expone este deseo a nuestras Hermanas, haciéndoles conocer el fracaso de las tentativas anteriores. "Si nadie quiere ir, dice la Madre Dominga Font, yo me ofrezco". La Madre Jacinta Rocher se ofrece igualmente..."
+									<br><br>
+									Tomando en consideración el asunto, Padre Cormier entabla conversaciones para ver la manera de realizar ésta fundación. Los primeros días de Septiembre, nuestras futuras misioneras parten a España con el objeto de aprender el español. El Padre Cormier había obtenido que las recibieran en un convento de las Dominicas de Pamplona. 
+									<br><br>
+									La Congregación no contaba con veinte años de existencia, pero afianzada en la bondad divina y en el anhelo de servir a los necesitados, acepta la fundación en el Ecuador y se da comienzo a los preparativos para el viaje. 
+								</p>
+									<h5 class="subtitulo__interno">
+										MISIONERAS EN AMÉRICA LATINA
+									</h5>
+								<p class="texto__interno">
+									Realizadas las formalidades legales, con las autoridades eclesiásticas y civiles de ambos países y firmado el Contrato respectivo, se resolvió el viaje de las hermanas, rumbo a Latinoamérica. 
+									Nombramiento. El 5 de Junio de 1889, reunido el Consejo General, hizo el nombramiento de las hermanas asignadas al Ecuador: Maríe Dominique Font Superiora, Hyacinte Rocher, Asistente, Primera consejera y Ecónoma. Joseph Pradel, Segunda Consejera, Enfermera y Boticaria. Filomena Picard, Ropera y Sacristana y Sor Aloise Roc, Coadjutora. 
+									<br><br>
+									La Partida: Con este título, la Madre Francoise Lohier Cofundadora de la Congregación, encabeza el relato sobre el viaje de las primeras Hermanas que vinieron de Francia: "Un gran sacrificio se presentaba delante de nosotras, el tiempo corría veloz y era como un agudo dolor que sentíamos al ver aproximarse el momento de la separación de nuestras queridas hermanas al Ecuador. 
+									El 6 de Junio de 1889, el Padre Román, O.P. a las 4 a.m. celebraba la Misa de despedida.
+									<br><br>
+									Nuestra Madre General había tomado la delantera y nos esperaba en Saintes, la tarde del mismo día. En esta casa es donde nuestras queridas Hermanas viajeras se vistieron del blanco sayal dominicano, objeto de los anhelos de todas; ellas fueron las primeras en recibirlo, como una indemnización a su magno sacrificio”. 
+								</p>
+			        		</div>
+			        		<div class="col-md-6">
+			        			<p class="texto__interno">
+									"El 8 de Junio, a las 11:30 p.m., el vapor nos lleva hasta Saint Nazaire donde debíamos celebrar la fiesta de Pentecostés. Nuestras miradas llenas de lágrimas, se rehuían mutuamente con el temor de exacerbar nuestros corazones, pues ellos soportaban la angustia de una real agonía. El 10 de Junio, día de los "ADIOSES", a las 11 a.m., nuestras viajeras se embarcaron en el vapor "Américo Vespucio", que hacía el servicio hacia Colón. A la 1 p.m, se elevó el ancla y el inmenso océano nos arrebató a nuestras hijas". 
+									<br><br>
+									"Era por Vos, oh Dios mío! Por vuestra gloria nosotras las cedimos, pues ningún otro móvil que Tú, sería capaz de hacernos aceptar un sacrificio así. Esperamos que un día nuestras lágrimas reciban su recompensa. 
+									<br><br>
+									"La primera carta nos llegó veinticinco días después de la partida, fue consignada en Pointe-a Pitre. En Panamá, las Hijas de la Caridad dan a nuestras hermanas la más cordial acogida y hospitalidad. En Guayaquil (Ecuador), donde ellas desembarcaron, las Hermanas de los Sagrados Corazones las recibieron con mucho afecto. El Padre Duranti, Prior de los Dominicos de Cuenca, las esperaba allí para acompañarlas en la ascensión a la cordillera de los Andes, sobre la cual debían ejercer nuestras hermanas su celo apostólico". 
+									<br><br>
+									"El 14 de Julio de 1889, hacían su entrada en la ciudad de Cuenca, acompañadas, más bien escoltadas, por una aristocrática cabalgata organizada en homenaje a ellas". 
+									ARRIBO: Llegaron a Cuenca, cinco abnegadas y distinguidas Religiosas francesas. Cinco vírgenes prudentes que traían, a través de los mares, el corazón convertido en lámpara de amor hacia el Señor, a cuyos miembros doloridos iban a servir en esta misión: el leprocomio
+									El Dr. Luis Cordero Crespo -que pronto iba a dar dos de sus hijas a la Comunidad- en brillantes palabras pronunciadas en francés, dio la bienvenida a las Religiosas que, abandonando su hogar y su patria, habían puesto sus plantas en tierra ecuatoriana, para ser en ella, cinco aristas de la nueva y fulgurante estrella que brilló en la frente de Domingo de Guzmán. 
+									<br><br>
+									La Madre Constancia Novillo, una de las primeras diez Hermanas que ingresaron a la naciente comunidad, narra en estos términos la llegada de las primeras Religiosas a Cuenca: 
+									"El Padre Duranti, negociador de la misión, que desde el comienzo se constituyó en un verdadero padre, hermano y amigo de las Religiosas, acompañado del Sr. Mariano Estrella entonces Colector del Leprocomio, fueron a traer a las Hermanas desde Guayaquil, a donde había llegado el 10 de Julio. La distinguida señora Inés Ruilova de Piedra (tía de Madre Isabel Piedra y abuela de Sor Matilde Piedra, ambas Religiosas de la Comunidad), se posesionó del Leprocomio para arreglar el albergue de las Religiosas que debían llegar. Las secundaron en su labor varias Señoritas también Terciarias como ella, y que proyectaban ingresar en la naciente Congregación". 
+									<br><br>
+									"Al encuentro de las Religiosas salió lo más distinguido de la ciudad y numeroso pueblo. Todas las calles por donde debían pasar las Hermanas, estuvieron repletas de gente. Venían las Religiosas con la sonrisa en los labios. Les habían dicho que llegarían al convento de los Sagrados Corazones, hasta arreglar debidamente el departamento que debían ocupar; pero ellas se negaron, prefiriendo ir a su propia casa..."
+								</p>
+			        		</div>
+			        	</div>
+			        </div><!--fin tab 6-->
+			        <div id="tab-7" class="tab-content">
+			        	<div class="row">
+			        			<h2>PRIMERAS FUNDACIONES</h2>
+			        		<div class="col-md-12">
+			        			<img src="img/congregacion__uno.jpg">
+			        		</div>
+			        		<div class="col-md-12">
+			        			<h4>RELATO SOBRE LAS PRIMERAS FUNDACIONES<br>
+								MADRE EDUVIGES PORTALET</h4>
+			        		</div>
+			        		<div class="col-md-6">
+			        			<p class="texto__interno">
+			        				Con el título de "Misiones Dominicanas", la revista editada en París por los Padres Dominicos de esa Provincia con el nombre de "ANNEE DOMINICAINE", el 10 de Enero de 1892, hablando de nuestra Congregación dice: "Los lectores de L´Année Dominicaine´conozcan que las Hermanas Dominicas de la Inmaculada Concepción, cuya casa Madre se encuentra en Toulouse, han tomado a su cargo en Ecuador, la Leprosería de Cuenca". 
+									<br><br>
+									He aquí algunos detalles sobre esta obra de abnegación, y de gloria para la Familia Dominicana... Acaba de enviarnos la muy Rvda. Madre General y Fundadora de la Congregación, en una carta del 12 de Diciembre último:
+									"Muy Rvdo. Padre: Cinco fueron nuestras primeras misioneras. Se embarcaron en ´Saint Nazaire´, el 10 de Julio del mismo año. El mismo día tomaron la dirección del Lazareto de la ciudad de Cuenca, en donde encontraron cincuenta leprosos. Estos pobres enfermos muy pronto pudieron darse cuenta de la abnegación de las Hermanas venidas de Francia para aliviarlos, cobraron confianza y se acercaban a ellas como a sus mejores benefactoras".
+									<br><br>
+									"Las Hermanas, vieron muy pronto abrirse, cerca del leprocomio un nuevo campo para su celo apostólico. La Municipalidad de Cuenca ha establecido en ese lugar una escuelita, frecuentada por las niñas indígenas de los alrededores. Estas pobres niñas, no conocían las cosas más elementales de la vida civilizada. Después de algunos meses, ellas se han transformado. La instrucción no ha sido descuidada, han aprendido catecismo, lectura, escritura, trabajo manual, etc. En el primer examen al que asistieron, el Sr. Obispo, varios miembros del Clero, gobernantes de la ciudad, como también los administradores del Leprocomio, todos han podido constatar el progreso de los alumnos (la escuela era mixta). Las alabanzas a las Dominicas estaban en todos los labios y aún en la prensa del lugar. Dios sea loado por estos éxitos y las glorias se deben a sólo a Él". 
+									<br><br>
+									"Muy pronto el Padre Duranti, Prior del convento de los Dominicos de Cuenca y verdadero padre de nuestras Hermanas, así como todos los Padres del convento, sus protectores abnegados, comprenden la necesidad de abrir un Noviciado en Cuenca, para responder a los perseverantes deseos de varias señoritas de la ciudad que, desde hace algún tiempo, ya desean acogerse a la bandera dominicana. Este Noviciado, se instauró el día del Rosario, el 7 de Octubre de 1890. Después de un Postulantado fervoroso y prolongado, las aspirantes en número de nueve, han sido admitidas a tomar el hábito, el 30 de Agosto de 1891". 
+								</p>
+			        		</div>
+			        		<div class="col-md-6">
+			        			<p class="texto__interno">
+									"Una segunda Escuela municipal ha sido anexa al Noviciado. En este momento cuenta ya con 195 alumnas, que reciben el bien de la educación cristiana". 
+									<br><br>
+									"El 26 de Mayo último, tres Hermanas francesas de nuestra Congregación se embarcaron en Bordeaux para llevar a las hermanas del Ecuador el apoyo de su celo y de su servicio. ¡Mas, dolorosas pruebas las esperaban! El viaje fue penoso y largo. Una de las hermanas, al llegar a Panamá, fue atacada por la fiebre amarilla, ella debía quedarse para ser atendida; mas, sus desoladas compañeras tenían que partir y la dejaron en las manos caritativas y cariñosas de las Hermanas de San Vicente de Paúl. La prueba no se detuvo aquí; desembarcando en Guayaquil, otra hermana es afectada por la misma fiebre y muere cinco días después, rodeada de los afectuosos cuidados de las Hermanas de los Sagrados Corazones. Entonces, tenía que alejarse de ésta su última compañera que llega sola a Cuenca. Ella estaba convencida de que sus dos hermanas habían fallecido".  
+									<br><br>
+									"Sin embargo, Dios quiso contentarse con una sola víctima. Dos meses después, nuestra querida Hermana Imelda curada de la fiebre, deja Panamá, sube a su vez la penosa montaña y aparece en Cuenca como una resucitada, a los ojos de sus Hermanas que la habían llorado ya muerta". 
+									<br><br>
+									"La tumba de la joven víctima, no tardó en volverse un apoyo para la fundación naciente. Durante estos últimos días, el 13 de Octubre, nuestras Hermanas han logrado hacer una nueva fundación en Gualaceo, pequeña ciudad situada a un día de camino a caballo desde Cuenca. Esta ciudad ofrece a nuestras Hermanas un hospital y una escuela municipal con trescientas alumnas". 
+									<br><br>
+									"Estoy feliz, Rvdo Padre, de daros estos detalles, les interesará a nuestros lectores, amigos de la gloria de Dios y de la Familia Dominicana. La mies es mucha y los obreros pocos. Entonces, si alguna amiga generosa siente el deseo de trabajar en este nuevo campo del Padre, que venga a golpear la puerta del modesto Noviciado de la Rue ´Monplaisir´de Toulouse; aquí será recibida por corazones amigos y fraternales que le ayudarán a realizar sus santos deseos" 
+									<br><br>
+									"Reciba Ud., Padre, la expresión de mi profundo respeto y de mi fraternal deseo de servirle" 
+									"Vuestra humilde Hermana en Santo Domingo". 
+									Sor Eduviges Portalet
+									Priora General.
+								</p>
+			        		</div>
+			        	</div>
+			        </div><!--fin tab 7-->
+			        <div id="tab-8" class="tab-content">
+			        	<div class="row">
+			        			<h2>SUPERIORAS GENERALES</h2>
+			        		<div class="col-md-12">
+			        			<img src="img/congregacion__uno.jpg">
+			        		</div>
+			        		<div class="col-md-12">
+			        			<h4>GALERIA DE SUPERIORAS GENERALES</h4>
+			        		</div>
+			        		<div class="col-md-6">
+			        			<p class="texto__interno">
+			        				1. Eduviges Portalet, Fundadora y Primera General (1877 - 1894) <br><br>
+									2. Francoise Lohier, Cofundadora (1894 - 1920) <br><br>
+									3. Marié du Sacré Coeur Monnier (1920 - 1929) <br><br>
+									4. Marié de l´Assomption Alias (1929 - 1950) <br><br>
+									5. Marié Marcel Rostaing (1950 - 1952) <br><br>
+									6. María de Santo Tomás Alvarado (1952 - 1958) <br><br>
+									7. Marié Agnes Trefalt (1958 - 1976) <br><br>
+									8. María Cristina Rodríguez Díaz (1976 - 1982) <br><br>
+									9. Marié de l´Immaculée Hervé (1982 - 2002) <br><br>
+									10. Marié Annick Dupuis (2002 - 2008) <br><br>
+									11. María Antonina Alfaro Minchola (2008 - 2014)
+									<br><br>
+									Prioras Generales y Consejeras 
+									1877 – 2014
+									<br><br>
+									* 28 de Setiembre de 1877
+									Priora General: M. Eduviges Portalet Couturier.
+									Asistente Genera: M. Marie Francoise Lohier
+									<br><br>
+									* 5 de Octubre de 1883
+									Priora General:M. Eduviges Portalet Couturier.
+									Asistente General: M. Marie Francoise Lohier
+									<br><br>
+									* 30 de Octubre de 1889
+									Priora General: M. Eduviges Portalet C.
+									Asistente General: M. Francoise Lohier.
+									<br><br>
+									* 20 de Diciembre de 1894
+									Priora General: M. Franciose Lohier
+									1º Asistenta General: M. Marie Reginalde Champonet
+									2º Asistenta: M. Marie Albert Rouquette.
+									<br><br>
+									* 29 de Agosto de 1900
+									Priora General: M. Francoise Lohier
+									1º Asistenta: M. Marie Melanie Burzay
+									2º Asistenta: M. Albert Rouquette
+									3º Asistenta: M. Marie Reginald Champonet.
+									4º Asistenta: M. Marie Angele Morel
+									<br><br>
+									* 27 de Agosto de 1906
+									Priora General: M. Marie Francoise Lohier
+									1º Asistenta: M. Marie Melanie Burzay
+									2º Asistenta: M. Marie Albert Rouquette
+									3º Asistenta: M. Mare Reginald Champonet
+									4º Asistenta: M. Marie Angele Morel
+									<br><br>
+									* 26 de Mayo de 1913
+									Priora General: M. Marie Francoise Lohier
+									1º Asistenta: M. Marie Emilie Gourmelec
+									2º Asistenta: M. Marie Melanie Burzay
+									3º Asistenta: M. Hyacinthe Marie Barbois
+									4º Asistenta: M. Marie Reymond Dufaut
+									<br><br>
+									* 12 de Julio de 1920
+									Priora GeneraL: M. Marie du Sacre Cour Monnier
+									1º Asistenta: M. Marie Emilie Gourmelec
+									2º Asistenta: M. Marie Lucie Veyrene
+									3º Asistenta: M. Marie Melanie Buzay
+									<br><br>
+									* 13 de Agosto de 1926
+									Priora General: M. Marie de L’Assomption Allias
+									1º Asistenta: M. Marie Melanie Buzay
+									2º Asistenta: M. Antonina Fricou
+									<br><br>
+									* 24 de Junio de 1932
+									Priora General: M. Marie de l'Assomption Allias
+									1º Asistenta: M. Marie du Sacre Coeur Monnier
+									2º Asistenta: M. Marie Melanie Buzay
+									3º Asistenta: M. Arie Emilie Gourmelec
+									4º Asistenta: M. Marie Marcel Rostaing
+									<br><br>
+									* 27 de Julio de 1938
+									Priora General: M. Marie de L’Assomption Allias
+									1º Asistenta: M. Marie Marcel Rostaing
+									2º Asistenta: M. Marie Melanie Buzay
+									3º Asistenta: M. Marie du Sacre Coeur Monnier
+									4º Asistenta: M. Marie Emilie Gourmelec
+									<br><br>
+								</p>
+			        		</div>
+			        		<div class="col-md-6">
+			        			<p class="texto__interno">
+			        				* 23 de Noviembre de 1946
+									Priora General: M. Marie Marcel Rostaing
+									1º Asistenta: M. Marie Lucie Veyrenec
+									2º Asistenta: M. Marie de Sto. Tomas Alvarado
+									3º Asistenta: M. Marie Du Sacre Coeur Monnier
+									4º Asistenta: M. Marie de L’Assomption
+									<br><br>
+									* 01 de Setiembre de 1952
+									Priora General: M. María de Sto. Tomas Alvarado
+									1º Asistenta: M. Marie Ambroise Latzague
+									2º Asistenta: M. Victoria de Jesús Cordero
+									3º Asistenta: M. María Amada Gordo
+									4º Asistenta: M. Marie Pia Vinet
+									<br><br>
+									* 31 de Octubre de 1956
+									Priora General: M. Agnes Marie Trefalt
+									1º Asistenta: M. Marie Ambroise Latzague
+									2º Asistenta: M. María Margarita González
+									3º Asistenta: M. Alfonsina de Jesús Padrón
+									4º Asistenta: M. M de l’Annonciation L•Hermite.
+									<br><br>
+									* 31 de Octubre de 1964
+									Priora General: M. Marie Agnes Marie Trefalt
+									1º Asistenta: M. Marie Andre Margalide
+									2º Asistenta: M. María Imelda López
+									3º Asistenta: M. María Margarita González
+									4º Asistenta: M. María Amada Gordo
+									<br><br>
+									* 30 de Octubre de 1970
+									Priora General: M. Agnes Marie Trefalt
+									1º. Consejera: M. Emmanuel Marie Perrion
+									2º Consejera: M. Imelda María Espinoza
+									3º Consejera: M. Eugenia Ubilluz Robles
+									4º Consejera y Secretaria M. Marie Marcel Rostaing
+									<br><br>
+									* 26 de Octubre de 1977
+									Priora General: M. María Cristina Rodríguez Díaz
+									1º Consejera: M. Agnes Marie Trefalt
+									2º Consejera: M. María de Sto. Tomás Alvarado.
+									3º Consejera: M. María Anunciación Tantalean
+									4º Consejera: M. Therese Armingol.
+									<br><br>
+									* 17 de Setiembre de 1983
+									Priora General: M. Marié de l’Inmaculée Hervee
+									1º Consejera: M. Agnes Marie Trefalt
+									2º Consejera: M. María Imelda Espinoza
+									3º Consejera: M. Clara Irigoyen
+									4º Consejera :M. Marie Andre Margalide
+									<br><br>
+									* 14 de Setiembre de 1989
+									Priora General: M. Marie de l'Inmaculée Hervé
+									1º Consejera: M. Marie Annick Dupuis
+									2º Consejera: M. María Teresa Flores
+									3º Consejera: M. Antonina Alfaro Minchola
+									4º Consejera M. Marie Odile Harnais
+									<br><br>
+									* 23 de Setiembre de 1995
+									Priora General: M. Marie de l’ Inmaculée Hervé
+									1º Consejera: M. Marie Bernadette Scida
+									2º Consejera: M. Marie Dominique Samaniego
+									3º Consejera: y Secretaria M. Marie Melanie Díaz Alemán
+									4º Consejera y Ecónoma M. Marie Annick Dupuis
+									<br><br>
+									* 25 de Junio de 2002
+									Priora General: M. Marie Annick Dupuis
+									1º Consejera: M. Marie de l’ Inmaculee Hervé
+									2º Consejera: M. Inés Calderón
+									3º Consejera: M. Beatriz Morales Huamán
+									4º Consejera: M. Matilde Verdesoto
+									Ecónoma: M. Marie Melanie Díaz Alemán.
+									<br><br>
+									* 12 de Setiembre de 2008
+									Priora General: M. Antonina Alfaro Minchola
+									1º Consejera: M. Marie Annick Dupuis
+									2º Consejera: M. Inés Calderón
+									3º Consejera: M. Rosa Zúñiga
+									4º Consejera: M. Magaly Tenorio Alcarazo
+									Ecónoma: M. Beatriz Morales Huamán.
+								</p>
+			        		</div>
+			        	</div>
+			        </div><!--fin tab 8-->
+			        <div id="tab-9" class="tab-content">
+			        	<div class="row">
+			        			<h2>FUNDADORES</h2>
+			        		<div class="col-md-12">
+			        			<img src="img/congregacion__uno.jpg">
+			        		</div>
+			        		<div class="col-md-12">
+			        			<h4>FUNDADORES</h4>
+			        		</div>
+			        		<div class="col-md-12">
+			        			<ul class="tabs-menu menu__fundadores" id="collapse1">
+							        <li class="current">
+							        	<a href="#tab-10">
+							        		<img src="img/fundadores__uno.jpg">
+							        		<p>EDUVIGES PORTALET</p>
+							        	</a>
+							        </li><!--
+							        --><li class="current">
+							        	<a href="#tab-11">
+							        		<img src="img/fundadores__dos.jpg">
+							        		<p>SANTO DOMINGO</p>
+							        	</a>
+							        </li><!--
+							        --><li class="current">
+							        	<a href="#tab-12">
+							        		<img src="img/fundadores__tres.jpg">
+							        		<p>JACINTO CORMIER</p>
+							        	</a>
+							        </li><!--
+							        --><li class="current">
+							        	<a href="#tab-13">
+							        		<img src="img/fundadores__cuatro.jpg">
+							        		<p>FRANCOISE LOHIER</p>
+							        	</a>
+							        </li>
+							    </ul><!--fin tabs menu-->
+			        		</div>
+			        	</div>
+			        </div><!--fin tab 9-->
+			        <div id="tab-10" class="tab-content">
+			        	<div class="row">
+			        			<h2>FUNDADORES</h2>
+			        		<div class="col-md-12">
+			        			<img src="img/congregacion__uno.jpg">
+			        		</div>
+			        		<div class="col-md-12">
+			        			<h4>EDUVIGES PORTALET</h4>
+			        		</div>
+			        		<div class="col-md-2">
+			        			<img src="img/fundadores__uno.jpg">
+			        		</div>
+			        		<div class="col-md-10">
+			        			<p class="texto__interno">
+									Eduviges Portalet Couturier Sierva de Dios Eduviges Portalet nació el 3 de diciembre de 1826 en la ciudad de Lyon (Francia). Fue bautizada a los tres días de nacida con los nombres de Francisca Genoveva Eduviges. Sus padres fueron, Benoit Gastón Portalet, abogado de la Corte Real de Lyon y Zelié Eleonore Couturier, parisense de excepcionales cualidades humanas, destacándose su clara inteligencia, perseverancia y virtud. Sus padres eran cristianos ejemplares, Eduviges heredó las virtudes más relevantes de sus padres. Recibió su Primera Comunión en 1838 siendo alumna de las religiosas Ursulinas de Villefranche.
+									<br><br>
+									Este primer encuentro con Jesús dejó en su alma indelebles huellas y desde allí no suspiró sino por el Divino Esposo a quién le consagró su virginidad.
+									<br><br>
+									A los quince años ingresó como alumna en el Convento de la Visitación de Marcellín para terminar su educación. En noviembre de 1862 no pudiendo retardar más el llamado poderoso a la vocación religiosa, ingresó al Instituto de María Inmaculada de reciente fundación en Marsella.
+									<br><br>
+									Tomó el hábito en la noche Navidad, al mes de su ingreso. Cumpliendo el año canónico de noviciado, hizo su profesión temporal con un gozo indecible. Tres años aún quedó en la casa de Noviciado, siendo modelo de observancia, virtud y sacrificio.
+									<br><br>
+									Fue nombrada Maestra de Novicias, cargo que ejerció con mucho acierto hasta su partida a Toulouse. El Señor tenía otros designios sobre esta alma privilegiada.
+									<br><br>
+									Él la quería para Madre de una nueva familia religiosa que extendería su Reino de Amor sobre la tierra. Fue así como el 25 de junio de 1866, fue enviada a Toulouse para fundar un instituto para niños ciegos del cual sería ella la superiora. Los comienzos de esta fundación como toda obra escogida por Dios, tuvo grandes pruebas que Madre Eduviges Portalet soportó con gran espíritu de fe, amor y sacrificio. Gran amiga de la santa pobreza, se abrazó a ella con alegría para asemejarse mejor al esposo de su alma. Madre Eduviges se abandonó a la Divina Providencia y no deseó sino hacer en todo la voluntad de Dios.
+									<br><br>
+									Fue el mismo Señor que tomó la dirección del instituto y dirigió los acontecimientos. Así en agosto de 1868, la Curia Eclesiástica obligó a nuestra Venerable Madre a separarse de la casa de Marsella, por motivos serios y poderosos de la Administración del Instituto, quedando autónoma esta fundación y establecida la «Congregación Tolosana de la Inmaculada Concepción», bajo los auspicios de Monsier l’Abbé de Pons, Vicario General.
+									<br><br>
+									El 3 de octubre de 1868 a los dos meses de estos acontecimientos, renovó Madre Eduviges sus Votos Temporales. Mientras tanto otras almas generosas deseosas de congregarse al Señor, ingresaron al reciente Instituto, cuya vida de Comunidad se convirtió en semillero de virtudes. Fiel colaboradora fue la Madre María Francisca Lohier, quién desplegó gran celo apostólico secundando a Madre Fundadora en sus actividades y aliviándola en sus fatigas con verdadero cariño filial. Se le considera como Cofundadora de la Congregación y su recuerdo va muy unido a los inicios de esta nueva familia religiosa.
+									<br><br>
+									Animada del Espíritu de Dios que guiaba todos sus actos Madre Eduviges inicia la construcción del Instituto de Niños Ciegos en la Rue Montplaisir (1870) trasladándose al nuevo edificio el 30 de setiembre de 1871 con la Comunidad y los niños ciegos. Su celo infatigable por dejar bien establecida la base de esta naciente Congregación no tuvo límites y grande fue su gozo cuando en la fiesta de Pascua de Resurrección de 1877 recibió las Reglas aprobadas por la Iglesia, Reglas que regirían desde ese momento a la Congregación.
+									<br><br>
+									El 21 de mayo de ese mismo año, inflamada de amor Divino, Madre Eduviges hizo su Profesión Perpetua y el 30 de setiembre fue elegida canónicamente Superiora General por unanimidad. Después de su nombramiento como Superiora General, su primer deseo fue emprender la construcción de la Casa Madre en la Rue Montplaisir, iniciándose las obras en el mes de mayo de 1878. Deseosa de extender su apostolado en bien de los invidentes, funda un Instituto para Obreras Ciegas en Saintes y más tarde abre también una Escuela en esa. En la Casa Madre crea un Externado en abril de 1882. Se encontraba por esa época como Confesor Extraordinario de la Comunidad, el Padre Jacinto María Cormier, dominico. Madre Eduviges que siempre había admirado esta Orden de Santo Domingo por ser ellos los hijos predilectos de María Inmaculada y estando también la reciente Congregación bajo el patrocinio de tan amorosa Madre, quiso por inspiración divina, afiliar su joven familia a esta Orden Gloriosa, manifestando su gran deseo al Padre Cormier (1883).
+									<br><br>
+									Este Santo religioso testigo de la vida edificante de las Hermanas, no solamente se alegró, sino se interesó vivamente por hacer realidad el deseo de Madre Eduviges, consiguiendo el fin propuesto ante el Maestro General de la Orden Dominicana, Fr. José María Larroca, quién accedió complacido su petición con el previo consentimiento del Ordinario del lugar. No alcanzaron las palabras para describir la alegría de Madre Eduviges, cuando el 8 de diciembre de 1884, festividad de la Santísima Virgen, Patrona de la Congregación, quedó afiliada a la Orden Dominicana bajo el título de «CONGREGACIÓN DE RELIGIOSAS DOCENTES DE LA TERCERA ORDEN DE SANTO DOMINGO DE LA INMACULADA CONCEPCIÓN», gozando de todos los privilegios de la Orden. Desde ese día la Congregación considera al Padre Cormier, (hoy Beato) como su Fundador. En 1886 la comunidad recibe la visita del Maestro General Larroca, siendo esta visita un aliento y una alegría para el corazón bondadoso de Madre Eduviges.
+									<br><br>
+									Las obras se fueron extendiendo guiadas por la Divina Providencia allende los mares hasta nuevos horizontes de América. La Madre Fundadora había recibido reiteradas peticiones para una fundación en el Ecuador (América), para tomar a su cargo la administración y asistencia a los enfermos del Leprocomio de Cuenca. Conocedora que esta era la voluntad de Dios, hizo los preparativos del viaje, enviando a seis de sus religiosas que después de larga travesía, pisaron tierras americanas el 14 de julio de 1889, instalándose en Cuenca (Ecuador).
+									<br><br>
+									Rápidamente se extendieron en toda esa República con florecientes obras de beneficencia y Educación. Algunos años más tarde, solicitadas para una fundación en el Perú, un grupo de religiosas pasó a la ciudad de Trujillo (1898) donde iniciaron el Colegio «Santa Rosa» que fue el primero de una serie de florecientes planteles de educación. La Madre Fundadora seguía infatigable trabajando en nuevas fundaciones. El 19 de marzo de 1894, funda en Fanjeaux una Escuela en el Convento de tantos recuerdos de nuestro Bienaventurado Padre Santo Domingo y verifica la compra de dicho Convento. El 8 de agosto del mismo año, traslada a Mazéres la Casa Madre y abre Escuela y Taller. El 4 de noviembre del 1894, la venerada Madre cae gravemente enferma.
+									<br><br>
+									El Señor la reclamaba para sí. Ella había cumplido la misión que Jesús le había encargado. El Esposo Divino la llamaba a las Bodas Eternas para coronarla y ella se le presentaba con las manos llenas de buenas obras. El 16 de noviembre de 1894, después de 12 días de gravedad rodeada de todas sus hijas que la lloraban, su alma se abrió como una flor para el cielo.
+									<br><br>
+									A la edad de 68 años y 31 de profesión Religiosa, dejó el invierno de la tierra, para ingresar a la primavera eterna de la felicidad del cielo. El perfume de sus virtudes y la semilla de su vida santa, sería el germen que fecundaría el jardín de la Orden Dominicana.
+								</p>
+			        		</div>
+			        	</div>
+			        </div><!--fin tab 10-->
+			        <div id="tab-11" class="tab-content">
+			        	<div class="row">
+			        			<h2>FUNDADORES</h2>
+			        		<div class="col-md-12">
+			        			<img src="img/congregacion__uno.jpg">
+			        		</div>
+			        		<div class="col-md-12">
+			        			<h4>SANTO DOMINGO</h4>
+			        		</div>
+			        		<div class="col-md-2">
+			        			<img src="img/fundadores__dos.jpg">
+			        		</div>
+			        		<div class="col-md-10">
+			        			<p class="texto__interno">
+									Nació en Caleruega, (España) en 1170, en el seno de una familia profundamente cristiana. Sus padres, don Félix de Guzmán y doña Juana de Aza, descendían de los condes fundadores de Castilla. Tuvo dos hermanos, Antonio y Manés.
+									<br><br>
+									De los siete a los catorce años (1177-1184), estuvo bajo la preceptoría de su tío el Arcipreste don Gonzalo de Aza, recibiendo esmerada formación moral y cultural. En este tiempo, transcurrido en su mayor parte en Gumiel de Izán (Burgos), despertó su vocación hacia el estado eclesiástico.
+									De los catorce a los veintiocho (1184-1198), vivió en Palencia: estudiando Artes (Humanidades superiores y Filosofía); y Teología. También fue profesor del Estudio General de Palencia.Al terminar la carrera de Artes en 1190, recibida la tonsura, se hizo Canónigo Regular en la Catedral de Osma. En el año 1191, en Palencia, se recuerda el rasgo de caridad heroica de vender sus libros, para aliviar a los pobres del hambre que asolaba España.
+									<br><br>
+									Al concluir la Teología en 1194, se ordenó sacerdote y es nombrado Regente de la Cátedra de Sagrada Escritura en el Estudio de Palencia.
+									Al finalizar sus cuatro cursos de docencia y Magisterio universitario, con veintiocho años de edad, se recogió en su Cabildo, en el que enseguida, por sus relevantes cualidades intelectuales y morales, el Obispo le encomienda la presidencia de la comunidad de canónigos y del gobierno de la diócesis en calidad de Vicario General de la misma.
+									<br><br>
+									En 1205, por encargo del Rey Alfonso VIII de Castilla, acompaña al Obispo de Osma, Diego, como embajador extraordinario para concertar en la corte danesa las bodas del príncipe Fernando. Con este motivo, tuvo que hacer nuevos viajes, siempre acompañando al obispo Diego a Dinamarca y a Roma, decidiéndose durante ellos su destino y clarificándose definitivamente su ya antigua vocación misionera. En sus idas y venidas por Francia, conoció los estragos que en las almas producía la herejía albigense. De acuerdo con el Papa Inocencio III, en 1206, al terminar las embajadas, se estableció en el Langüedoc como predicador de la verdad entre los cátaros. Rehúsa a los obispados de Conserans, Béziers y Comminges, para los que había sido elegido canónicamente.
+									Para remediar los males que la ignorancia religiosa producía en la sociedad, en 1215 establece en Tolosa la primera casa de su Orden de Predicadores, cedida a Domingo por Pedro Sella, quien con Tomás de Tolosa se asocia a su obra.
+									<br><br>
+									En septiembre del mismo año, llega de nuevo a Roma en segundo viaje, acompañando del Obispo de Tolosa, Fulco, para asistir al Concilio de Letrán y solicitar del Papa la aprobación de su Orden, como organización religiosa de Canónigos regulares. De regreso de Roma elige con sus compañeros la Regla de San Agustín para su Orden y en septiembre de 1216, vuelve en tercer viaje a Roma, llevando consigo la Regla de San Agustín y un primer proyecto de Constituciones para su Orden. El 22 de Diciembre de 1216 recibe del Papa Honorio III la Bula “Religiosam Vitam” por la que confirma la Orden de Frailes Predicadores.
+									Al año siguiente retorna a Francia y en el mes de Agosto dispersa a sus frailes, enviando cuatro a España y tres a París, decidiendo marchar él a Roma. Allí se manifiesta su poder taumatúrgico con numerosos milagros y se acrecienta de modo extraordinario el número de sus frailes. Meses después enviará los primeros Frailes a Bolonia.A finales de 1218 Domingo vuelve a España donde visitará Segovia, Madrid y Guadalajara.
+									<br><br>
+									Por mandato del Papa Honorio III, en un quinto viaje a Roma, reúne en el convento de San Sixto a las monjas dispersas por los distintos monasterios de Roma, para obtener para los Frailes el convento y la Iglesia de Santa Sabina.
+									En la Fiesta de Pentecostés de 1220 asiste al primer Capítulo General de la Orden, celebrado en Bolonia. En él se redactan la segunda parte de las Constituciones. Un año después, en el siguiente Capítulo celebrado también en Bolonia, acordará la creación de ocho Provincias.
+									<br><br>
+									Con su Orden perfectamente estructurada y más de sesenta comunidades en funcionamiento, agotado físicamente, tras breve enfermedad, murió el 6 de agosto de 1221, a los cincuenta y un años de edad, en el convento de Bolonia, donde sus restos permanecen sepultados. En 1234, su gran amigo y admirador, el Papa Gregorio IX, lo canonizó.
+								</p>
+			        		</div>
+			        	</div>
+			        </div><!--fin tab 11-->
+			        <div id="tab-12" class="tab-content">
+			        	<div class="row">
+			        			<h2>FUNDADORES</h2>
+			        		<div class="col-md-12">
+			        			<img src="img/congregacion__uno.jpg">
+			        		</div>
+			        		<div class="col-md-12">
+			        			<h4>JACINTO CORMIER</h4>
+			        		</div>
+			        		<div class="col-md-2">
+			        			<img src="img/fundadores__tres.jpg">
+			        		</div>
+			        		<div class="col-md-10">
+			        			<p class="texto__interno">
+									Nació en Orleáns (Francia) el 8 de diciembre de 1832.
+									Las primeras lecciones de fe las adquirió de sus padres en el seno de una familia profundamente cristiana, especialmente de su madre de quién recibió la primera impresión de virtud y de piedad que no se borró nunca de su vida. 
+									Se educó con los Hermanos de las Escuelas Cristianas, ellos descubrieron sus excepcionales cualidades artísticas, especialmente para la música y el canto. <br><br>
+									El día en que descubrió que deseaba ser sacerdote pidió a sus padres entrar en el Seminario Menor de Orléans. Al concluir sus estudios secundarios fue aceptado en el Seminario Mayor dirigido por los Padres de San Sulpicio. Terminada la teología fue ordenado sacerdote el 17 de mayo de 1856.
+									El seguimiento de Jesucristo bajo el estilo de vida dominicano y proyecto de santo Domingo de Guzmán sedujo a este joven sacerdote francés para que pidiera su ingreso en la comunidad dominicana.
+									A los pocos días el joven sacerdote se despidió de los suyos y se dirigió al noviciado dominicano de Flavigny. Tomó el hábito de Santo Domingo y desde entonces su nombre sería Jacinto María.
+									<br><br>
+									Tenía un exquisito sentido de la urbanidad y de la caridad fraterna. Fue amante de la pobreza, sincero en la humildad, penitente, y amante del silencio; pues en realidad fue un hombre de profunda vida interior y espiritual. Propagó el conocimiento y la veneración a los santos de la Orden.
+									<br><br>
+									Su oración fue una constante durante toda su vida en la comunidad dando testimonio de su carisma dominicano, y más aun, su interés para que todos siguieran el ideal del padre fundador de la Orden de Predicadores, Santo Domingo de Guzmán, pues esto muy bien lo expresa en la carta que redactó él mismo al ser elegido maestro de la Orden de Predicadores en 1904, y de la cual vale la pena extraer uno de sus párrafos en donde escribe:  <br><br>
+									“Con el mismo ánimo y con el mismo lema que Pío X se fijó desde el inicio de su pontificado - recapitular en Cristo todas las cosas (Ef 1,10), del mismo modo, nada desearíamos más que recapitular en Domingo todas nuestras cosas. Así, ha de estar vigoroso en nosotros y hemos de propagar aquel mismo espíritu de oración, de penitencia, de humildad, de pobreza, de obediencia, de compasión hacia el prójimo y de ardiente celo por defender la fe, que sobresalía en el santísimo Patriarca.” <br><br>
+									De esta forma, nos damos cuenta que toda la vida del beato Cormier estuvo impregnada de gran oración la cual encomendó fervientemente a Cristo, y a Santo Domingo de Guzmán, pero siempre desprendido en los brazos de la Santa madre de nuestro Salvador Jesucristo ante la cual ya en sus momentos de intensa enfermedad y que ni siquiera podía celebrar el Santo Sacrificio de la Eucaristía aunque fuese sentado, lo único que le quedaba era pedir por lo menos que le ayudasen entonando la 
+									<br><br>
+									“Salve Regina”, pues sabía muy bien a quien era que le estaba confiando todo su reposo y su descanso; Jacinto sabía perfectamente que había sido la madre de Dios a quien se le había otorgado el cuidado de todos y cada uno de los frailes de la Orden de Domingo de Guzmán, lo cual él mismo tendrá presente durante toda su vida y por lo cual es que no dejará pasar un solo día en el que no contemple los misterios de Cristo en el Santo Rosario, sabiendo así que al repetir piadosamente el saludo del ángel a María no quedarí	a defraudado ante ella, y mucho menos sería desamparado de la “Madre del consuelo”.
+									<br><br>
+									Fue Maestro de la Orden de Predicadores de 1904 - 1916 Su norma fue evitar todo tipo de sectarismo en la Orden a la vez que impulsó el respeto de las individualidades y de las libertades. Falleció el 17 de diciembre de 1916 y está enterrado en el Angelicum de Roma. Fue beatificado por Juan Pablo II el 20 de noviembre de 1994.
+								</p>
+			        		</div>
+			        	</div>
+			        </div><!--fin tab 12-->
+			        <div id="tab-13" class="tab-content">
+			        	<div class="row">
+			        			<h2>FUNDADORES</h2>
+			        		<div class="col-md-12">
+			        			<img src="img/congregacion__uno.jpg">
+			        		</div>
+			        		<div class="col-md-12">
+			        			<h4>FRANCOISE LOHIER</h4>
+			        		</div>
+			        		<div class="col-md-2">
+			        			<img src="img/fundadores__cuatro.jpg">
+			        		</div>
+			        		<div class="col-md-10">
+			        			<p class="texto__interno">
+									Nació el 24 de Enero de 1839 en Bretaña, Francia, de un hogar cristiano, de donde también salió un sacerdote.
+									<br><br>
+									Bretaña al norte de Francia, es una región histórica, comprende la península que se extiende hasta el océano Atlántico entre el canal de la Mancha, al norte, y el golfo de Vizcaya, al sur. Rennes es la capital administrativa de la región.
+									<br><br>
+									Bretaña es una de las regiones francesas que más se beneficia de su mayor longitud de costas. Tiene un clima templado, sobre todo a lo largo del litoral, con débiles diferencias de temperaturas entre el verano y el invierno. El viento de noroeste domina el norte. Las lluvias de regular y alta intensidad son frecuentes.
+									<br><br>
+									En una misma jornada, es normal que se alternen los claros y cielo cubierto, la vegetación es abundante. La economía de Bretaña se inclina hacia la agricultura y las industrias agroalimentarias, el turismo estival en el litoral y algunos centros industriales y tecnológicos avanzados.
+									<br><br>
+									Esta tierra de tanta promisión y fuerza vio nacer a Francoise Lohier y su espíritu estuvo impregnado de la fuerza de la naturaleza y de la luz del sol que entibia las aguas del mar que juegan con las piedras rocosas de las orillas o con las blancas arenas de las playas bretonas, como el agua y el sol de su tierra conservó una pasión constante por la libertad y la verdad, que hizo brillar su personalidad de decisiones concretas, prontas y firmes.
+									<br><br>
+									Desde joven se sintió atraída por el Señor, y aunque su vida de fe la llevaba a vivir como una buena cristiana practicante, siempre había una interrogante en su corazón que no tenía respuesta concreta. En Marsella conoce a las hermanas de María Inmaculada, las frecuenta, y en la búsqueda de respuesta a las preguntas que tiene su corazón solicita hacer la experiencia en la comunidad de Toulouse para hacer un serio discernimiento vocacional.
+									<br><br>
+									El 9 de enero de 1867 llega Francoise a Toulouse y es acogida por la comunidad. Durante el tiempo de experiencia demostró su empeño en el trabajo y su servicio generoso y pronto; su franqueza, sinceridad y apertura le valieron para ser solicitada rápidamente en muchas tareas de la joven comunidad, tareas que fueron siendo cada día más grandes, las cuales fue asumiendo con responsabilidad y prolijidad.
+									<br><br>
+									Francoise llega a la Comunidad en el momento en que el mar de las contradicciones vive la noche más difícil de la tormenta; pero la llamada del Señor había tocado su corazón y la quiere en su barca elegida. Ella no se amilana y siente la fuerza del Espíritu Santo para hacerse a la mar; ni las mareas ni la noche cerrada le hará perder de vista que quien conduce la barca es el mismo Jesucristo.
+									<br><br>
+									El 24 de mayo de 1869 fue la vestición del hábito, tenía 30 años cuando decide unirse al proyecto de Eduviges Portalet, después de hacer su discernimiento en la comunidad de Toulouse, se abandona totalmente a la Voluntad de Dios.
+									<br><br>
+									El 3 de octubre de 1869 acompaña a Madre fundadora, es testigo excepcional y cofundadora de la Congregación de Hermanas Dominicas de la Inmaculada Concepción.
+									<br><br>
+									El 9 de octubre de 1869 pronunció sus primeros votos de pobreza, castidad y obediencia para unirse en esta familia religiosa y para hacerse predicadora de la Verdad y portadora de la luz de Cristo.
+									<br><br>
+									Participó de todos los proyectos de la naciente comunidad, orando desde el alba fervorosamente, dejando a los pies del Sagrario todos los asuntos diarios, su fe le decía que nadie mejor que el Maestro para conducir la tarea. Celebró jubilosa todas las luces y los pequeños triunfos de las hermanas, de los niños del instituto y supo mantenerse de pie y acompañar a la Madre fundadora y a las hermanas en los momentos de la prueba y de las noches sin luz. Nadie mejor que ella para velar en oración y saber esperar; nadie mejor que ella para escuchar y expresar una opinión, idea o consejo; nadie mejor que ella para callar, hacer silencio, e impetrar las respuestas de Dios para madre Eduviges y para la comunidad; nadie mejor que ella para conocer el corazón de la madre, para saber de sus afanes, hacer eco de sus proyectos, de sus sueños, de su cruz; nadie mejor hermana, amiga y confidente; el buen Padre Dios sabe sin duda colocar bien las piezas y en el lugar correcto en el ajedrez de la vida.
+									<br><br>
+									El 1º de abril de 1877 se conmemoraba jubilosamente la Pascua de Resurrección, con la alegría de Cristo vencedor de las tinieblas, luz sin ocaso, la comunidad recibe la aprobación de las Reglas de la Congregación por el Arzobispo de Toulouse, monseñor Florián Deprez.
+									<br><br>
+									El 21 de mayo de 1877 hace su profesión perpetua, recibe de manos del Arzobispo los votos que le unirán al Esposo Divino, hasta la muerte, alianza con aquél que mueve todos los hilos de la historia para que se desarrolle su proyecto divino de amor.
+									<br><br>
+									Trabajó incansablemente junto a Madre Eduviges en la realización del proyecto de la Casa Madre, primer local propio de la Congregación, en la calle Montplaisir 13, el calendario señalaba el 24 de noviembre de 1870 como el día de la bendición del nuevo hogar, donde funcionaron un taller para jóvenes ciegas y una escuela para niñas videntes.
+									<br><br>
+									El 8 de diciembre del 1884 estuvo presente en la singularísima ocasión de nuestra afiliación a la Orden de Predicadores, tomando como nombre propio, Congregación Hermanas Dominicas de la Inmaculada Concepción. A lo largo de sus años de vida contó a sus hermanas estas experiencias que afirmaron nuestra identidad como religiosas y como dominicas. Conoció muy de cerca al Padre Jacinto María Cormier, como consejero, amigo y benefactor, escribiendo con su puño y letra de este santo varón, “Desde este día consideramos al Padre Cormier como nuestro fundador” (FL)
+									<br><br>
+									Su caridad solicita y su fervor, su tarea generosa y su servicio pronto, su piedad concreta y su constancia, fueron virtudes que hicieron propicia su elección como Maestra de Novicias. La tarea del apostolado requiere de fuerza física pero sobre todo de empuje espiritual, pero la formación de las almas que necesitan discernir el llamado a la santidad que Dios hace a sus vidas, resulta una tarea de alta envergadura espiritual, Francoise poseía estas virtudes, por eso dirigió a tantos corazones jóvenes que Jesús llamaba a su mies en esta Casa dominicana.
+									<br><br>
+									El 21 de mayo de 1887 con el voto unánime de la comunidad fue elegida Madre Eduviges, canónicamente Superiora General y Madre Francoise, Asistente General de la Congregación de acuerdo al ceremonial aprobado para tal efecto.
+									<br><br>
+									En 1889 ve partir junto a Madre Eduviges a cinco de las hermanas con el blanco sayal dominico; surcando las aguas del Atlántico van hacia América confiadas en la Providencia y con la bendición de su fundadora y la socia del proyecto. Al mirar el horizonte, la inmensidad del mar, devolvía a la mente de Francoise Lohier las imágenes de sus hermanas pasando por el Canal de Panamá, y llegando a las aguas mas serenas del mar del Pacífico para desembarcar en el Puerto de Guayaquil – Ecuador. Invocó en su corazón, haciendo eco de la oración de Madre fundadora la protección de la Virgen de Lourdes para ellas y para la nueva misión. El espíritu misionero de estas dos mujeres las hizo confiar totalmente en la Providencia Divina y en la capacidad de amar y de servir de sus cinco hermanas, cinco misioneras para llevar el Evangelio y la Verdad a tierras latinoamericanas.
+									<br><br>
+									En agosto de 1894, la Casa Madre y el Noviciado se trasladan temporalmente a Mazères al local del Colegio Apostólico de los Padres Dominicos. Regresaron a la Casa Madre de Toulouse el 13 de Octubre de 1896. La resolución fue tomada después de las acerbas pruebas sufridas en Toulouse. Itinerancia dolorosa. “Cuando se sufre, la esperanza esconde las espinas del futuro, y nos da valor para afrontar las dificultades del presente” (Françoise Lohier.)
+									<br><br>
+									El 4 de agosto de 1884 toda la comunidad empieza a usar el hábito dominicano blanco y negro; eran como un blanco ejército de azucenas abrazadas a la cruz, que les recuerda que hay que vencer la tinieblas, arrinconando la oscuridad con la luz de la verdad, y con la fuerza del amor.
+									<br><br>
+									La Casa Madre de Toulouse volvió a manos de la Congregación en octubre de 1899, gracias a las gestiones de Madre Françoise Lohier.
+									<br><br>
+									La vida de la comunidad continuó con su oración fervorosa, vida litúrgica y en sus afanes apostólicos.
+									<br><br>
+									El amanecer del 16 de noviembre de 1894 fue un día de combate para toda la familia religiosa, la salud deteriorada de nuestra querida madre fundadora por tantos afanes, reclamaba abrazarse al Padre de los cielos. Este fue el día de su partida para adquirir la ciudadanía sin fin; desde la eternidad donde su nombre está escrito, le seria aún más útil a su familia Dominica. Así lo entendió Francisca en su fe, aunque su corazón quedó en silencio y sin palabras ante este devenir.
+									<br><br>
+									Madre Francoise Lohier continuó escribiendo el cuaderno Memoria de Madre fundadora, donde ella escribía para su familia religiosa la historia de nuestra familia; ella mejor que nadie pudo continuar esta historia por que le tocó ver, vivir, y compartir los orígenes y los inicio de nuestra familia religiosa. Sus escritos revelan su extraordinaria personalidad, la fuerza de sus convicciones y la tenacidad para lograr sus ideales. Fue una socia perfecta en el proyecto de Madre fundadora.
+									<br><br>
+									El 20 de diciembre en Mazéres, de 1894 la comunidad reunida en pleno, presidida por el Obispo de Pamiers elige a Madre Françoise Lohier como primera sucesora de Madre Eduviges Portalet como Priora General de la Congregación. Nadie como ella estaba llamada a continuar la obra que fundaron donde trabajaron y lucharon juntas para edificarla, levantando la blanca bandera sin mancha de María Inmaculada.
+									<br><br>
+									Madre Francoise aprueba la iniciativa de las hermanas del Ecuador para hacer una fundación en Trujillo el año 1898. Este sería el sarmiento vigoroso de una nueva Provincia bajo el patrocinio de la Rosa más grande de América, Santa Rosa de Lima.
+									<br><br>
+									Considerando la situación anticlericalista de Francia, en previsión de ser expulsadas y para extender el reino de Dios funda con la anuncia de su Consejo, en 1905 una Casa para ciegas en San Sebastián – España.
+									<br><br>
+									El 27 de agosto de 1906 es reelegida por tercera vez Priora General, con la presencia del Maestro de la Orden Jacinto María Cormier. Se solicita la dispensa respectiva a Roma la que es aceptada.
+									<br><br>
+									Se erige oficialmente las casas de Ecuador en Provincia. En este mismo Capítulo se hace una nueva revisión de las Constituciones, que son sometidas a la revisión del Padre Cormier y después a la Sagrada Congregación de Religiosos.
+									<br><br>
+									Envía las Constituciones en idioma francés ala Provincia del Ecuador en el año 1907.
+									<br><br>
+									Recibe durante su Priorato la aprobación definitiva de la Congregación el 15 de setiembre de 1910, concedida por el Papa Pio X.
+									<br><br>
+									Animó a sus hermanas a vivir una vida religiosa en contemplación y acción, las animaba con la palabra y el ejemplo. Su oración y su palabra escrita llegaban a sus hermanas del Ecuador y del Perú, para que sigan construyendo el edificio de la Congregación tal como lo deseaba nuestra Fundadora.
+									<br><br>
+									Dirigió los destinos de nuestra familia religiosa hasta el Capítulo General de 1920, donde fue elegida la Madre Marié du Sacré Coeur Monnier como tercera generala de la Congregación
+									<br><br>
+									Después de ardua y fecunda tarea apostólica parte a la mansión celestial el 16 de abril de 1925 en Pompignan, a los ochentaisiete años de vida y cincuentiseis años de vida religiosa.
+								</p>
+			        		</div>
+			        	</div>
+			        </div><!--fin tab 13-->
+			    </div><!--fin tab-->
+			</div><!--fin col md 9-->
+		</div><!--fin row-->
+	</div><!--fin container-->
+	<div class="container-fluid footer__containerfluid">
+		<div class="container">
+		<footer class="footer">
+			<div class="col-md-2 col-sm-2 col-xs-3">
+				<div class="footer__item">
+					<h4>CONGREGACIÓN</h4>
+					<ul>
+						<li><a>¿Quienes somos?</a></li>
+						<li><a>Historia</a></li>
+						<li><a>Vida Dominicana</a></li>
+						<li><a>¿Dónde estamos?</a></li>
+						<li><a>Compromiso</a></li>
+						<li><a>Crónicas</a></li>
+						<li><a>Primeras Fundaciones</a></li>
+						<li><a>Superioras Generales</a></li>
+						<li><a>Fundadores</a></li>
+					</ul>
+				</div><!--fin footer item-->
+			</div><!--fin col md 2-->
+			<div class="col-md-2 col-sm-2 col-xs-3">
+				<div class="footer__item">
+					<h4>PROVINCIA<br>SANTA ROSA</h4>
+					<ul>
+						<li><a href="#">Presentación</a></li>
+						<li><a href="#">Espiritualidad</a></li>
+						<li><a href="#">Una Dominica es...</a></li>
+						<li><a href="#">Obras</a></li>
+						<li><a href="#">Consitución de Fundadores</a></li>
+						<li><a href="#">Proyecto Pastoral</a></li>
+						<li><a href="#">Colegios</a></li>
+					</ul>
+				</div><!--fin footer item-->
+			</div><!--fin col md 2-->
+			<div class="col-md-2 col-sm-2 col-xs-3">
+				<div class="footer__item">
+					<h4>RECURSOS</h4>
+					<ul>
+						<li><a href="#">Artículos</a></li>
+						<li><a href="#">Oraciones</a></li>
+						<li><a href="#">Fechas Importantes</a></li>
+						<li><a href="#">Galería</a></li>
+					</ul>
+				</div><!--fin footer item-->
+			</div><!--fin col md 2-->
+			<div class="col-md-2 col-sm-2 col-xs-3">
+				<div class="footer__item">
+					<h4>SEDES</h4>
+					<ul>
+						<li><a href="#">La Libertad</a></li>
+						<li><a href="#">Lima</a></li>
+						<li><a href="#">Piura</a></li>
+						<li><a href="#">Lambayeque</a></li>
+						<li><a href="#">Cajamarca</a></li>
+						<li><a href="#">Junín</a></li>
+						<li><a href="#">Ica</a></li>
+						<li><a href="#">Arequipa</a></li>
+						<li><a href="#">Cusco</a></li>
+						<li><a href="#">Mendoza</a></li>
+						<li><a href="#">Roma</a></li>
+					</ul>
+				</div><!--fin footer item-->
+			</div><!--fin col md 2-->
+			<div class="col-md-3 col-md-offset-1 col-sm-4 col-xs-12">
+				<img src="img/logo.png" width="75px" height="73px">
+				<h3>HERMANAS DOMINICAS DE LA<br>INMACULADA CONCEPCIÓN</h3>
+				<p>PROVINCIA SANTA ROSA - PERÚ</p>
+				<p>(01) 440-6323</p>
+				<p>email: dic@dominicasperu.com.pe</p>
+				<p>Administrador: TAI GRAF S.A.C.</p>
+				<p>Copyright © 2013 Dominicas Perú</p>
+				<p>Todos los derechos reservados</p>
+			</div>
+		</footer><!--fin footer-->
+		</div><!--fin container-->
+	</div><!--fin container fluid-->
+	<script type="text/javascript">
+		$(document).ready(function() {
+		    $(".tabs-menu a").click(function(event) {
+		        event.preventDefault();
+		        $(this).parent().addClass("current");
+		        $(this).parent().siblings().removeClass("current");
+		        var tab = $(this).attr("href");
+		        $(".tab-content").not(tab).css("display", "none");
+		        $(tab).fadeIn();
+		    });
+		});
+	</script>
+	<!--<script type="text/javascript">
+		$("#button__menu__interno").click(function(){
+		    $("#menu__interno").animate({width: 'toggle'});
+		});
+	</script>-->
+</body>
+</html>
